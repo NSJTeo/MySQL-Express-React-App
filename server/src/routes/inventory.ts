@@ -42,7 +42,7 @@ router.get("/:itemId", (req, res) => {
   res.send(item);
 });
 
-router.delete("/:itemId/delete", (req, res) => {
+router.delete("/:itemId", (req, res) => {
   const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
   const parsedInventory: any[] = JSON.parse(inventory);
   const filteredInventory: object | undefined = parsedInventory.filter(
@@ -55,13 +55,18 @@ router.delete("/:itemId/delete", (req, res) => {
   res.send("deleted!");
 });
 
-router.put("/:itemId/edit", (req, res) => {
+router.put("/:itemId", (req, res) => {
   const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
   const parsedInventory: any[] = JSON.parse(inventory);
-  let item: object = parsedInventory.find((parsedItem) => {
-    (parsedItem: { id: string }) => parsedItem.id === req.params.itemId;
-  });
-  item = { id: item, ...req.body };
+  let item = parsedInventory.find(
+    (parsedItem: { id: string }) => parsedItem.id === req.params.itemId
+  );
+  for (const property in req.body) {
+    if (!req.body[property].trim()) {
+      return res.send("error!!!");
+    }
+    item[property] = req.body[property];
+  }
   fs.writeFileSync("./data/inventories.json", JSON.stringify(parsedInventory));
   res.send(item);
 });

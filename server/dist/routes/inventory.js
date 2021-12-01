@@ -39,4 +39,24 @@ router.get("/:itemId", (req, res) => {
     const item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);
     res.send(item);
 });
+router.delete("/:itemId", (req, res) => {
+    const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
+    const parsedInventory = JSON.parse(inventory);
+    const filteredInventory = parsedInventory.filter((parsedItem) => parsedItem.id !== req.params.itemId);
+    fs_1.default.writeFileSync("./data/inventories.json", JSON.stringify(filteredInventory));
+    res.send("deleted!");
+});
+router.put("/:itemId", (req, res) => {
+    const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
+    const parsedInventory = JSON.parse(inventory);
+    let item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);
+    for (const property in req.body) {
+        if (!req.body[property].trim()) {
+            return res.send("error!!!");
+        }
+        item[property] = req.body[property];
+    }
+    fs_1.default.writeFileSync("./data/inventories.json", JSON.stringify(parsedInventory));
+    res.send(item);
+});
 exports.default = router;
