@@ -43,6 +43,17 @@ router.get("/:warehouseId", (req, res) => {
   res.json(warehouse);
 });
 
+router.get("/:warehouseId/inventory", (req, res) => {
+  console.log(req.params);
+  const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
+  const parsedInventory = JSON.parse(inventory);
+  const filteredInventory = parsedInventory.filter(
+    (item: { warehouseID: string }) =>
+      item.warehouseID === req.params.warehouseId
+  );
+  res.json(filteredInventory);
+});
+
 router.put("/:warehouseId", (req, res) => {
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   const parsedWarehouses = JSON.parse(warehouses);
