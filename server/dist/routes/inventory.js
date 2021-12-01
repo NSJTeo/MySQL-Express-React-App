@@ -50,7 +50,7 @@ router
     const parsedInventory = JSON.parse(inventory);
     let item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);
     for (const property in req.body) {
-        if (!req.body[property].trim()) {
+        if (!req.body[property]) {
             return res.send("error!!!");
         }
         item[property] = req.body[property];

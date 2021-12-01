@@ -7,11 +7,13 @@ const express_1 = __importDefault(require("express"));
 const fs_1 = __importDefault(require("fs"));
 const uuid_1 = require("uuid");
 const router = express_1.default.Router();
-router.get("/", (_req, res) => {
+router
+    .route("/")
+    .get((_req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     res.json(warehouses);
-});
-router.post("/", (req, res) => {
+})
+    .post((req, res) => {
     const contactInfo = {
         name: req.body.contact.name,
         position: req.body.contact.position,
@@ -32,12 +34,6 @@ router.post("/", (req, res) => {
     fs_1.default.writeFileSync("./data/warehouses.json", JSON.stringify(parsedWarehouses));
     res.send(newWarehouse);
 });
-router.get("/:warehouseId", (req, res) => {
-    const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
-    const parsedWarehouses = JSON.parse(warehouses);
-    const warehouse = parsedWarehouses.find((parsedWarehouse) => parsedWarehouse.id === req.params.warehouseId);
-    res.json(warehouse);
-});
 router.get("/:warehouseId/inventory", (req, res) => {
     console.log(req.params);
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
@@ -45,20 +41,28 @@ router.get("/:warehouseId/inventory", (req, res) => {
     const filteredInventory = parsedInventory.filter((item) => item.warehouseID === req.params.warehouseId);
     res.json(filteredInventory);
 });
-router.put("/:warehouseId", (req, res) => {
+router
+    .route("/:warehouseId")
+    .get((req, res) => {
+    const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
+    const parsedWarehouses = JSON.parse(warehouses);
+    const warehouse = parsedWarehouses.find((parsedWarehouse) => parsedWarehouse.id === req.params.warehouseId);
+    res.json(warehouse);
+})
+    .put((req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
     let warehouse = parsedWarehouses.find((parsedWarehouse) => parsedWarehouse.id === req.params.warehouseId);
     for (const property in req.body) {
-        if (!req.body[property].trim()) {
+        if (!req.body[property]) {
             return res.send("error!!!");
         }
         warehouse[property] = req.body[property];
     }
     fs_1.default.writeFileSync("./data/warehouses.json", JSON.stringify(parsedWarehouses));
     res.send(warehouse);
-});
-router.delete("/:warehouseId", (req, res) => {
+})
+    .delete((req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
     const filteredWarehouses = parsedWarehouses.filter((parsedWarehouse) => parsedWarehouse.id !== req.params.warehouseId);
