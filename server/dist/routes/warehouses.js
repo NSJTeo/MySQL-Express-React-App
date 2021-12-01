@@ -26,7 +26,6 @@ router.post("/", (req, res) => {
         country: req.body.country,
         contact: contactInfo,
     };
-    console.log(newWarehouse);
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
     parsedWarehouses.push(newWarehouse);

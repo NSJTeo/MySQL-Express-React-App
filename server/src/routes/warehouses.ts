@@ -16,6 +16,7 @@ router.post("/", (req, res) => {
     phone: req.body.contact.phone,
     email: req.body.contact.email,
   };
+
   const newWarehouse = {
     id: uuidv4(),
     name: req.body.name,
@@ -24,7 +25,7 @@ router.post("/", (req, res) => {
     country: req.body.country,
     contact: contactInfo,
   };
-  console.log(newWarehouse);
+
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   const parsedWarehouses = JSON.parse(warehouses);
   parsedWarehouses.push(newWarehouse);
