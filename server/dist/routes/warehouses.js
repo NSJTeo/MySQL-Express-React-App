@@ -11,7 +11,7 @@ router.get("/", (_req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     res.json(warehouses);
 });
-router.post("/create", (req, res) => {
+router.post("/", (req, res) => {
     const contactInfo = {
         name: req.body.contact.name,
         position: req.body.contact.position,

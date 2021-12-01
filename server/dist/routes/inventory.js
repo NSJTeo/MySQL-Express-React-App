@@ -6,17 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const fs_1 = __importDefault(require("fs"));
 const uuid_1 = require("uuid");
-// GET ALL INVENTORY ITEMS
-// GET SINGLE INVENTORY ITEM
-// POST NEW INVENTORY ITEM
-// DELETE INVENTORY ITEM
-// EDIT INVENTORY ITEM
 const router = express_1.default.Router();
-router.get("/", (_req, res) => {
+router
+    .route("/")
+    .get((_req, res) => {
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     res.send(inventory);
-});
-router.post("/create", (req, res) => {
+})
+    .post((req, res) => {
     const newItem = {
         id: (0, uuid_1.v4)(),
         warehouseId: null,
@@ -33,20 +30,22 @@ router.post("/create", (req, res) => {
     fs_1.default.writeFileSync("./data/inventories.json", JSON.stringify(parsedInventory));
     res.send(newItem);
 });
-router.get("/:itemId", (req, res) => {
+router
+    .route("/:itemId")
+    .get((req, res) => {
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     const parsedInventory = JSON.parse(inventory);
     const item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);
     res.send(item);
-});
-router.delete("/:itemId", (req, res) => {
+})
+    .delete((req, res) => {
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     const parsedInventory = JSON.parse(inventory);
     const filteredInventory = parsedInventory.filter((parsedItem) => parsedItem.id !== req.params.itemId);
     fs_1.default.writeFileSync("./data/inventories.json", JSON.stringify(filteredInventory));
     res.send("deleted!");
-});
-router.put("/:itemId", (req, res) => {
+})
+    .put((req, res) => {
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     const parsedInventory = JSON.parse(inventory);
     let item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);

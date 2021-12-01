@@ -9,7 +9,7 @@ router.get("/", (_req, res) => {
   res.json(warehouses);
 });
 
-router.post("/create", (req, res) => {
+router.post("/", (req, res) => {
   const contactInfo = {
     name: req.body.contact.name,
     position: req.body.contact.position,
