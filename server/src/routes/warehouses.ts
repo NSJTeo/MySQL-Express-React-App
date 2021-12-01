@@ -57,11 +57,11 @@ router.get("/:warehouseId/inventory", (req, res) => {
 router.put("/:warehouseId/edit", (req, res) => {
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   const parsedWarehouses = JSON.parse(warehouses);
-  const warehouse = parsedWarehouses.find(
+  let warehouse = parsedWarehouses.find(
     (parsedWarehouse: { id: string }) =>
       parsedWarehouse.id === req.params.warehouseId
   );
-  warehouse.name = req.body.name;
+  warehouse = { id: warehouse.id, ...req.body };
   fs.writeFileSync("./data/warehouses.json", JSON.stringify(parsedWarehouses));
   res.send(warehouse);
 });

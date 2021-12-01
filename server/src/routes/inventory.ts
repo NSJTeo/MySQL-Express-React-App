@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 const router = express.Router();
 
 router.get("/", (_req, res) => {
-  const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
+  const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
   res.send(inventory);
 });
 
@@ -26,19 +26,43 @@ router.post("/create", (req, res) => {
     status: req.body.status,
     quantity: req.body.quantity,
   };
-  const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
-  const parsedInventory = JSON.parse(inventory);
+  const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
+  const parsedInventory: object[] = JSON.parse(inventory);
   parsedInventory.push(newItem);
   fs.writeFileSync("./data/inventories.json", JSON.stringify(parsedInventory));
   res.send(newItem);
 });
 
 router.get("/:itemId", (req, res) => {
-  const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
-  const parsedInventory = JSON.parse(inventory);
-  const item = parsedInventory.find(
+  const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
+  const parsedInventory: any[] = JSON.parse(inventory);
+  const item: object | undefined = parsedInventory.find(
     (parsedItem: { id: string }) => parsedItem.id === req.params.itemId
   );
+  res.send(item);
+});
+
+router.delete("/:itemId/delete", (req, res) => {
+  const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
+  const parsedInventory: any[] = JSON.parse(inventory);
+  const filteredInventory: object | undefined = parsedInventory.filter(
+    (parsedItem: { id: string }) => parsedItem.id !== req.params.itemId
+  );
+  fs.writeFileSync(
+    "./data/inventories.json",
+    JSON.stringify(filteredInventory)
+  );
+  res.send("deleted!");
+});
+
+router.put("/:itemId/edit", (req, res) => {
+  const inventory: string = fs.readFileSync("./data/inventories.json", "utf-8");
+  const parsedInventory: any[] = JSON.parse(inventory);
+  let item: object = parsedInventory.find((parsedItem) => {
+    (parsedItem: { id: string }) => parsedItem.id === req.params.itemId;
+  });
+  item = { id: item, ...req.body };
+  fs.writeFileSync("./data/inventories.json", JSON.stringify(parsedInventory));
   res.send(item);
 });
 
