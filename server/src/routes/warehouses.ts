@@ -9,7 +9,7 @@ router.get("/", (_req, res) => {
   res.json(warehouses);
 });
 
-router.post("/", (req, res) => {
+router.post("/create", (req, res) => {
   const contactInfo = {
     name: req.body.contact.name,
     position: req.body.contact.position,
@@ -54,7 +54,7 @@ router.get("/:warehouseId/inventory", (req, res) => {
   res.json(filteredInventory);
 });
 
-router.put("/:warehouseId", (req, res) => {
+router.put("/:warehouseId/edit", (req, res) => {
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   const parsedWarehouses = JSON.parse(warehouses);
   const warehouse = parsedWarehouses.find(
@@ -66,7 +66,7 @@ router.put("/:warehouseId", (req, res) => {
   res.send(warehouse);
 });
 
-router.delete("/:warehouseId", (req, res) => {
+router.delete("/:warehouseId/delete", (req, res) => {
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   const parsedWarehouses = JSON.parse(warehouses);
   const filteredWarehouses = parsedWarehouses.filter(
