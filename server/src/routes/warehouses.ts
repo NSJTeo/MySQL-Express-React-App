@@ -1,11 +1,35 @@
 import express from "express";
 import fs from "fs";
+import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
 
 router.get("/", (_req, res) => {
   const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
   res.json(warehouses);
+});
+
+router.post("/", (req, res) => {
+  const contactInfo = {
+    name: req.body.contact.name,
+    position: req.body.contact.position,
+    phone: req.body.contact.phone,
+    email: req.body.contact.email,
+  };
+  const newWarehouse = {
+    id: uuidv4(),
+    name: req.body.name,
+    address: req.body.address,
+    city: req.body.city,
+    country: req.body.country,
+    contact: contactInfo,
+  };
+  console.log(newWarehouse);
+  const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
+  const parsedWarehouses = JSON.parse(warehouses);
+  parsedWarehouses.push(newWarehouse);
+  fs.writeFileSync("./data/warehouses.json", JSON.stringify(parsedWarehouses));
+  res.send(newWarehouse);
 });
 
 router.get("/:warehouseId", (req, res) => {
