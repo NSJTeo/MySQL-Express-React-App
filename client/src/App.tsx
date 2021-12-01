@@ -1,5 +1,7 @@
+import WarehouseList from "./pages/WarehouseList/WarehouseList";
+
 function App() {
-  return null;
+  return <WarehouseList />;
 }
 
 export default App;
