@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import { WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
-export default function WarehouseEdit() {
+export default function WarehouseEdit(): ReactElement {
   const [warehouseDetails, setWarehouseDetails] = useState<WarehouseProfile>();
   const { warehouseID } = useParams();
   const navigate = useNavigate();

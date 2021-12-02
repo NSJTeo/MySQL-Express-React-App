@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import axios from "axios";
 import WarehouseListItem from "../../components/WarehouseListItem/WarehouseListItem";
 import WarehouseListSearchBar from "../../components/WarehouseListSearchBar/WarehouseListSearchBar";
 import { WarehouseProfile } from "../../types/types";
 
-export default function WarehouseList() {
+export default function WarehouseList(): ReactElement {
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
 
   useEffect(() => {

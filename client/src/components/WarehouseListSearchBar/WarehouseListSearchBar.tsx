@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-export default function WarehouseListSearchBar() {
+export default function WarehouseListSearchBar(): ReactElement {
   return (
     <>
       <h1>Warehouses</h1>

@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { useNavigate } from "react-router";
 
-export default function WarehouseAdd() {
+export default function WarehouseAdd(): ReactElement {
   const navigate = useNavigate();
   const handleCancel = () => {
     navigate("/");
