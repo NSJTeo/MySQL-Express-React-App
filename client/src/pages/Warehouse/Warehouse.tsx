@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useEffect } from "react";
 import { WarehouseProfile, InventoryItem } from "../../types/types";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import axios from "axios";
 
@@ -24,6 +24,12 @@ export default function Warehouse(): ReactElement {
       });
   }, [warehouseID]);
 
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/");
+  };
+
   if (!warehouse) {
     return <p>Loading</p>;
   }
@@ -31,7 +37,7 @@ export default function Warehouse(): ReactElement {
   return (
     <>
       <div>
-        <p>Back</p>
+        <button onClick={handleBack}>Back</button>
         <h1>{warehouse!.name}</h1>
         <p>Edit</p>
       </div>

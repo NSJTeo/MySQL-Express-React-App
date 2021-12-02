@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function WarehouseListSearchBar() {
   return (
@@ -7,7 +8,7 @@ export default function WarehouseListSearchBar() {
       <form>
         <input />
       </form>
-      <button>Add New Warehouse</button>
+      <Link to="/warehouse/add">Add New Warehouse</Link>
     </>
   );
 }
