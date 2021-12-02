@@ -8,7 +8,7 @@ router
   .route("/")
   .get((_req, res) => {
     const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
-    res.json(warehouses);
+    res.send(warehouses);
   })
   .post((req, res) => {
     const contactInfo = {
@@ -45,7 +45,7 @@ router.get("/:warehouseId/inventory", (req, res) => {
     (item: { warehouseID: string }) =>
       item.warehouseID === req.params.warehouseId
   );
-  res.json(filteredInventory);
+  res.send(filteredInventory);
 });
 
 router
@@ -57,7 +57,7 @@ router
       (parsedWarehouse: { id: string }) =>
         parsedWarehouse.id === req.params.warehouseId
     );
-    res.json(warehouse);
+    res.send(warehouse);
   })
   .put((req, res) => {
     const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
