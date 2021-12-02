@@ -8,5 +8,9 @@ interface Props {
 export default function WarehouseInventoryListItem({
   inventoryItem,
 }: Props): ReactElement {
-  return <li>{inventoryItem.itemName}</li>;
+  return (
+    <li>
+      <p>{inventoryItem.itemName}</p>
+    </li>
+  );
 }

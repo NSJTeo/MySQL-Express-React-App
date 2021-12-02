@@ -9,7 +9,8 @@ interface Props {
 export default function WarehouseListItem({ warehouse }: Props): ReactElement {
   return (
     <li>
-      <Link to={`/${warehouse.id}`}>{warehouse.name}</Link>
+      <Link to={`/warehouse/${warehouse.id}`}>{warehouse.name}</Link>
+      <Link to={`/warehouse/${warehouse.id}/edit`}>Edit</Link>
     </li>
   );
 }
