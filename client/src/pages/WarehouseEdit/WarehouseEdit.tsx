@@ -16,6 +16,10 @@ export default function WarehouseEdit() {
       });
   }, []);
 
+  const handleCancel = () => {
+    navigate(`/warehouse/${warehouseDetails?.id}`);
+  };
+
   if (!warehouseDetails) {
     return <p>Loading</p>;
   }
@@ -23,7 +27,9 @@ export default function WarehouseEdit() {
   return (
     <>
       <div>
-        <p>Back</p>
+        <button type="button" onClick={handleCancel}>
+          Back
+        </button>
         <h1>Edit Warehouse</h1>
       </div>
       <form>
@@ -45,7 +51,9 @@ export default function WarehouseEdit() {
         <input defaultValue={warehouseDetails.contact.phone} />
         <label>Email</label>
         <input defaultValue={warehouseDetails.contact.email} />
-        <button type="button">Cancel</button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
         <button type="submit">Save</button>
       </form>
     </>
