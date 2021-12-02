@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import WarehouseListItem, {
-  Warehouse,
-} from "../../components/WarehouseListItem/WarehouseListItem";
+import WarehouseListItem from "../../components/WarehouseListItem/WarehouseListItem";
 import WarehouseListSearchBar from "../../components/WarehouseListSearchBar/WarehouseListSearchBar";
+import { WarehouseProfile } from "../../types/types";
 
 export default function WarehouseList() {
-  const [warehouses, setWarehouses] = useState<Warehouse[]>([]);
+  const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
 
   useEffect(() => {
     console.log("use effect");

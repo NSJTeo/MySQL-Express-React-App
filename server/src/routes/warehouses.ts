@@ -38,7 +38,6 @@ router
   });
 
 router.get("/:warehouseId/inventory", (req, res) => {
-  console.log(req.params);
   const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
   const parsedInventory = JSON.parse(inventory);
   const filteredInventory = parsedInventory.filter(

@@ -1,25 +1,15 @@
 import React, { ReactElement } from "react";
-
-type Contact = {
-  name: string;
-  position: string;
-  phone: string;
-  email: string;
-};
-
-export type Warehouse = {
-  id: string;
-  name: string;
-  address: string;
-  city: string;
-  country: string;
-  contact: Contact;
-};
+import { WarehouseProfile } from "../../types/types";
+import { Link } from "react-router-dom";
 
 interface Props {
-  warehouse: Warehouse;
+  warehouse: WarehouseProfile;
 }
 
 export default function WarehouseListItem({ warehouse }: Props): ReactElement {
-  return <li>{warehouse.name}</li>;
+  return (
+    <li>
+      <Link to={"/" + `${warehouse.id}`}>{warehouse.name}</Link>
+    </li>
+  );
 }
