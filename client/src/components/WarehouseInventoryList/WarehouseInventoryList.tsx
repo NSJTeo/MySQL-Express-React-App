@@ -1,7 +1,19 @@
 import React, { ReactElement } from "react";
+import { InventoryItem } from "../../types/types";
+import WarehouseInventoryListItem from "../WarehouseInventoryListItem/WarehouseInventoryListItem";
 
-interface Props {}
+interface Props {
+  inventoryItems: InventoryItem[];
+}
 
-export default function WarehouseInventoryList({}: Props): ReactElement {
-  return <div></div>;
+export default function WarehouseInventoryList({
+  inventoryItems,
+}: Props): ReactElement {
+  return (
+    <ul>
+      {inventoryItems.map((inventoryItem) => {
+        return <WarehouseInventoryListItem inventoryItem={inventoryItem} />;
+      })}
+    </ul>
+  );
 }

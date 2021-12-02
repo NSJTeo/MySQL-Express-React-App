@@ -1,11 +1,12 @@
 import React, { ReactElement, useState, useEffect } from "react";
 import { WarehouseProfile, InventoryItem } from "../../types/types";
 import { useParams } from "react-router";
+import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import axios from "axios";
 
 export default function Warehouse(): ReactElement {
   const [warehouse, setWarehouse] = useState<WarehouseProfile>();
-  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>();
+  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>([]);
   const { warehouseID } = useParams();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function Warehouse(): ReactElement {
             setInventoryItems(response.data);
           });
       });
-  }, []);
+  }, [warehouseID]);
 
   if (!warehouse) {
     return <p>Loading</p>;
@@ -50,6 +51,7 @@ export default function Warehouse(): ReactElement {
           <p>{warehouse.contact.email}</p>
         </div>
       </div>
+      <WarehouseInventoryList inventoryItems={inventoryItems} />
     </>
   );
 }
