@@ -3,6 +3,7 @@ import axios from "axios";
 import WarehouseListItem, {
   Warehouse,
 } from "../../components/WarehouseListItem/WarehouseListItem";
+import WarehouseListSearchBar from "../../components/WarehouseListSearchBar/WarehouseListSearchBar";
 
 export default function WarehouseList() {
   const [warehouses, setWarehouses] = useState<Warehouse[]>([]);
@@ -16,7 +17,7 @@ export default function WarehouseList() {
 
   return (
     <>
-      <div>Search Bar</div>
+      <WarehouseListSearchBar />
       <div>
         <ul>
           {warehouses.map((warehouse) => {
