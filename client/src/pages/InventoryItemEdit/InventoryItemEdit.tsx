@@ -1,24 +1,46 @@
 import { ReactElement, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { InventoryItemInfo } from "../../types/types";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
 export default function InventoryItemEdit(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
+  const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
 
   const { inventoryItemID } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/inventory/${inventoryItemID}`)
       .then((response) => {
         setInventoryItem(response.data);
+        axios.get(`http://localhost:8080/warehouses`).then((response) => {
+          let warehouses = response.data;
+          warehouses = warehouses.filter(
+            (warehouse: WarehouseProfile) =>
+              warehouse.name !== inventoryItem?.warehouseName
+          );
+          setWarehouses(warehouses);
+        });
       });
   }, [inventoryItemID]);
 
   if (!inventoryItem) {
     return <p>Loading</p>;
   }
+
+  let categories: string[] = [
+    "Electronics",
+    "Gear",
+    "Apparel",
+    "Accessories",
+    "Health",
+  ];
+
+  categories = categories.filter(
+    (category) => category !== inventoryItem.category
+  );
 
   return (
     <>
@@ -34,9 +56,12 @@ export default function InventoryItemEdit(): ReactElement {
         <textarea defaultValue={inventoryItem.description} />
         <label>Category</label>
         <select>
-          <option>{inventoryItem.category}</option>
-          <option>Option 1</option>
-          <option>Option 2</option>
+          <option value={inventoryItem.category}>
+            {inventoryItem.category}
+          </option>
+          {categories.map((category) => {
+            return <option value={category}>{category}</option>;
+          })}
         </select>
         <h2>Item Availability</h2>
         <div>
@@ -59,12 +84,15 @@ export default function InventoryItemEdit(): ReactElement {
         <input defaultValue={inventoryItem.quantity} />
         <label>Warehouse</label>
         <select>
-          <option>{inventoryItem.warehouseName}</option>
-          <option>Option 1</option>
-          <option>Option 2</option>
+          <option value={inventoryItem.warehouseName}>
+            {inventoryItem.warehouseName}
+          </option>
+          {warehouses.map((warehouse) => {
+            return <option value={warehouse.name}>{warehouse.name}</option>;
+          })}
         </select>
         <Link to={`/inventory/${inventoryItemID}`}>Cancel</Link>
-        <button type="submit">+ Add New Warehouse</button>
+        <button type="submit">Save</button>
       </form>
     </>
   );
