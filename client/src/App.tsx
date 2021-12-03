@@ -8,6 +8,7 @@ import InventoryItemAdd from "./pages/InventoryItemAdd/InventoryItemAdd";
 import InventoryItem from "./pages/InventoryItem/InventoryItem";
 import InventoryItemEdit from "./pages/InventoryItemEdit/InventoryItemEdit";
 import PageHeader from "./components/PageHeader/PageHeader";
+import PageFooter from "./components/PageFooter/PageFooter";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/inventory" element={<InventoryList />} />
         <Route path="/" element={<WarehouseList />} />
       </Routes>
+      <PageFooter />
     </BrowserRouter>
   );
 }

@@ -12,7 +12,12 @@ export default function WarehouseInventoryList({
   return (
     <ul>
       {inventoryItems.map((inventoryItem) => {
-        return <WarehouseInventoryListItem inventoryItem={inventoryItem} />;
+        return (
+          <WarehouseInventoryListItem
+            key={inventoryItem.id}
+            inventoryItem={inventoryItem}
+          />
+        );
       })}
     </ul>
   );

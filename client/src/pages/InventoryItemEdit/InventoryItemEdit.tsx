@@ -24,7 +24,7 @@ export default function InventoryItemEdit(): ReactElement {
     <>
       <div>
         <Link to={`/inventory/${inventoryItemID}`}>Back</Link>
-        <h1>Add New Inventory Item</h1>
+        <h1>Edit Inventory Item</h1>
       </div>
       <form>
         <h2>Item Details</h2>
@@ -41,7 +41,7 @@ export default function InventoryItemEdit(): ReactElement {
         <h2>Item Availability</h2>
         <div>
           {inventoryItem.quantity ? (
-            <input name="availability" type="radio" checked />
+            <input name="availability" type="radio" defaultChecked />
           ) : (
             <input name="availability" type="radio" />
           )}
@@ -51,7 +51,7 @@ export default function InventoryItemEdit(): ReactElement {
           {inventoryItem.quantity ? (
             <input name="availability" type="radio" />
           ) : (
-            <input name="availability" type="radio" checked />
+            <input name="availability" type="radio" defaultChecked />
           )}
           <label>Out of Stock</label>
         </div>
