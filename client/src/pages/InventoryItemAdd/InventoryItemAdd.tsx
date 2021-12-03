@@ -39,6 +39,7 @@ export default function InventoryItemAdd(): ReactElement {
         </div>
         <label>Quantity</label>
         <input />
+        <label>Warehouse</label>
         <select>
           <option>Please Select</option>
           <option>Option 1</option>

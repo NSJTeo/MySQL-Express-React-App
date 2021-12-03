@@ -1,12 +1,19 @@
-import React, { ReactElement } from "react";
-import { InventoryItem } from "../../types/types";
+import { ReactElement } from "react";
+import { InventoryItemInfo } from "../../types/types";
+import { Link } from "react-router-dom";
 
 interface Props {
-  inventoryItem: InventoryItem;
+  inventoryItem: InventoryItemInfo;
 }
 
 export default function InventoryListItem({
   inventoryItem,
 }: Props): ReactElement {
-  return <div>{inventoryItem.itemName}</div>;
+  return (
+    <div>
+      <Link to={`/inventory/${inventoryItem.id}`}>
+        {inventoryItem.itemName}
+      </Link>
+    </div>
+  );
 }

@@ -1,12 +1,12 @@
 import React, { ReactElement, useState, useEffect } from "react";
-import { WarehouseProfile, InventoryItem } from "../../types/types";
+import { WarehouseProfile, InventoryItemInfo } from "../../types/types";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import axios from "axios";
 
 export default function Warehouse(): ReactElement {
   const [warehouse, setWarehouse] = useState<WarehouseProfile>();
-  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>([]);
+  const [inventoryItems, setInventoryItems] = useState<InventoryItemInfo[]>([]);
   const { warehouseID } = useParams();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Warehouse(): ReactElement {
   return (
     <>
       <div>
-        <button onClick={handleBack}>Back</button>
+        <Link to="/">Back</Link>
         <h1>{warehouse!.name}</h1>
         <Link to={`/warehouse/${warehouseID}/edit`}>Edit</Link>
       </div>

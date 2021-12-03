@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
@@ -27,9 +27,7 @@ export default function WarehouseEdit(): ReactElement {
   return (
     <>
       <div>
-        <button type="button" onClick={handleCancel}>
-          Back
-        </button>
+        <Link to={`/warehouse/${warehouseDetails.id}`}>Back</Link>
         <h1>Edit Warehouse</h1>
       </div>
       <form>
@@ -51,9 +49,7 @@ export default function WarehouseEdit(): ReactElement {
         <input defaultValue={warehouseDetails.contact.phone} />
         <label>Email</label>
         <input defaultValue={warehouseDetails.contact.email} />
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+        <Link to={`/warehouse/${warehouseDetails.id}`}>Cancel</Link>
         <button type="submit">Save</button>
       </form>
     </>

@@ -14,7 +14,7 @@ export type WarehouseProfile = {
   contact: Contact;
 };
 
-export type InventoryItem = {
+export type InventoryItemInfo = {
   id: string;
   warehouseID: string;
   warehouseName: string;

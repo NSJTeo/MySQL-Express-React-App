@@ -1,8 +1,8 @@
-import React, { ReactElement } from "react";
-import { InventoryItem } from "../../types/types";
+import { ReactElement } from "react";
+import { InventoryItemInfo } from "../../types/types";
 
 interface Props {
-  inventoryItem: InventoryItem;
+  inventoryItem: InventoryItemInfo;
 }
 
 export default function WarehouseInventoryListItem({
