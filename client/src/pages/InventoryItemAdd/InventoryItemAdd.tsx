@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { WarehouseProfile } from "../../types/types";
 
@@ -15,6 +15,7 @@ type NewInventoryItem = {
 
 export default function InventoryItemAdd(): ReactElement {
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
@@ -46,20 +47,15 @@ export default function InventoryItemAdd(): ReactElement {
     const newInventoryItem: NewInventoryItem = {
       warehouseId: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
-
       itemName: e.target.itemName.value,
       description: e.target.description.value,
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
       quantity: +e.target.quantity.value,
     };
-    console.log(newInventoryItem);
-    alert(newInventoryItem);
-    axios
-      .post("http://localhost:8080/inventory", newInventoryItem)
-      .then((response) => {
-        console.log(response);
-      });
+    axios.post("http://localhost:8080/inventory", newInventoryItem).then(() => {
+      navigate(`/warehouse/${selectedWarehouse.id}`);
+    });
   };
 
   useEffect(() => {
