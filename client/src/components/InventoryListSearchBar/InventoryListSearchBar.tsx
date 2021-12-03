@@ -1,9 +1,7 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-interface Props {}
-
-export default function InventoryListSearchBar({}: Props): ReactElement {
+export default function InventoryListSearchBar(): ReactElement {
   return (
     <>
       <h1>Inventory</h1>

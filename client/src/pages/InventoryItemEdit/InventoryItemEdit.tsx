@@ -14,7 +14,7 @@ export default function InventoryItemEdit(): ReactElement {
       .then((response) => {
         setInventoryItem(response.data);
       });
-  }, []);
+  }, [inventoryItemID]);
 
   if (!inventoryItem) {
     return <p>Loading</p>;

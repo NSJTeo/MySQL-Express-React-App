@@ -1,12 +1,11 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
 export default function WarehouseEdit(): ReactElement {
   const [warehouseDetails, setWarehouseDetails] = useState<WarehouseProfile>();
   const { warehouseID } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -14,11 +13,7 @@ export default function WarehouseEdit(): ReactElement {
       .then((response) => {
         setWarehouseDetails(response.data);
       });
-  }, []);
-
-  const handleCancel = () => {
-    navigate(`/warehouse/${warehouseDetails?.id}`);
-  };
+  }, [warehouseID]);
 
   if (!warehouseDetails) {
     return <p>Loading</p>;

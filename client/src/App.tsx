@@ -7,10 +7,12 @@ import InventoryList from "./pages/InventoryList/InventoryList";
 import InventoryItemAdd from "./pages/InventoryItemAdd/InventoryItemAdd";
 import InventoryItem from "./pages/InventoryItem/InventoryItem";
 import InventoryItemEdit from "./pages/InventoryItemEdit/InventoryItemEdit";
+import PageHeader from "./components/PageHeader/PageHeader";
 
 function App() {
   return (
     <BrowserRouter>
+      <PageHeader />
       <Routes>
         <Route
           path="/warehouse/:warehouseID/edit"

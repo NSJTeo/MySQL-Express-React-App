@@ -8,9 +8,7 @@ export default function InventoryList(): ReactElement {
   const [inventoryItems, setInventoryItems] = useState<InventoryItemInfo[]>([]);
 
   useEffect(() => {
-    console.log("use effect");
     axios.get("http://localhost:8080/inventory").then((response) => {
-      console.log(response.data);
       setInventoryItems(response.data);
     });
   }, []);

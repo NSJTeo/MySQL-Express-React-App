@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { InventoryItemInfo } from "../../types/types";
 import axios from "axios";
 
@@ -14,7 +14,7 @@ export default function InventoryItem(): ReactElement {
         console.log(response.data);
         setInventoryItem(response.data);
       });
-  }, []);
+  }, [inventoryItemID]);
 
   if (!inventoryItem) {
     return <p>Loading</p>;
