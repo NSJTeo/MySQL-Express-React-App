@@ -16,7 +16,7 @@ router
   .post((req, res) => {
     const newItem = {
       id: uuidv4(),
-      warehouseId: null,
+      warehouseId: req.body.warehouseId,
       warehouseName: req.body.warehouseName,
       itemName: req.body.itemName,
       description: req.body.description,
