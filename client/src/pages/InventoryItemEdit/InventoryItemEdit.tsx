@@ -1,8 +1,7 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { InventoryItemInfo } from "../../types/types";
 import axios from "axios";
-import "./InventoryItemEdit.scss";
 
 export default function InventoryItemEdit(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
@@ -56,10 +55,8 @@ export default function InventoryItemEdit(): ReactElement {
           )}
           <label>Out of Stock</label>
         </div>
-        <div className="inventory-edit-form__quantity-input-container">
-          <label>Quantity</label>
-          <input />
-        </div>
+        <label>Quantity</label>
+        <input defaultValue={inventoryItem.quantity} />
         <label>Warehouse</label>
         <select>
           <option>{inventoryItem.warehouseName}</option>
