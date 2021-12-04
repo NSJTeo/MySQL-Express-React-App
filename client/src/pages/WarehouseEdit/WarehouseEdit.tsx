@@ -1,11 +1,12 @@
 import React, { ReactElement, useEffect, useState, useRef } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
 export default function WarehouseEdit(): ReactElement {
   const [warehouseDetails, setWarehouseDetails] = useState<WarehouseProfile>();
   const { warehouseID } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -35,8 +36,8 @@ export default function WarehouseEdit(): ReactElement {
     console.log(warehouseInfo);
     axios
       .put(`http://localhost:8080/warehouses/${warehouseID}`, warehouseInfo)
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        navigate(`/warehouse/${warehouseID}`);
       });
   };
 
