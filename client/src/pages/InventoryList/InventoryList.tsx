@@ -13,6 +13,14 @@ export default function InventoryList(): ReactElement {
     });
   }, []);
 
+  const handleDelete = (inventoryID: string) => {
+    axios.delete(`http://localhost:8080/inventory/${inventoryID}`).then(() => {
+      axios.get("http://localhost:8080/inventory").then((response) => {
+        setInventoryItems(response.data);
+      });
+    });
+  };
+
   return (
     <>
       <InventoryListSearchBar />
@@ -23,6 +31,7 @@ export default function InventoryList(): ReactElement {
               <InventoryListItem
                 key={inventoryItem.id}
                 inventoryItem={inventoryItem}
+                handleDelete={handleDelete}
               />
             );
           })}

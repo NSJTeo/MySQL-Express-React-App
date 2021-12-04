@@ -11,7 +11,6 @@ export default function InventoryItem(): ReactElement {
     axios
       .get(`http://localhost:8080/inventory/${inventoryItemID}`)
       .then((response) => {
-        console.log(response.data);
         setInventoryItem(response.data);
       });
   }, [inventoryItemID]);
