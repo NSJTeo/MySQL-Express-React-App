@@ -24,6 +24,7 @@ export default function InventoryListItem({
       <button onClick={handleClick}>
         <img src={deleteIcon} alt="delete icon" />
       </button>
+      <Link to={`/inventory/${inventoryItem.id}/edit`}>Edit</Link>
     </div>
   );
 }

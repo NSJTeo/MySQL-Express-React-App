@@ -98,7 +98,7 @@ export default function InventoryItemEdit(): ReactElement {
   return (
     <>
       <div>
-        <Link to={`/inventory/${inventoryItemID}`}>Back</Link>
+        <Link to={`/inventory`}>Back</Link>
         <h1>Edit Inventory Item</h1>
       </div>
       <form onSubmit={(e: any) => handleSubmit(e)}>
@@ -144,7 +144,7 @@ export default function InventoryItemEdit(): ReactElement {
             return <option value={warehouse.name}>{warehouse.name}</option>;
           })}
         </select>
-        <Link to={`/inventory/${inventoryItemID}`}>Cancel</Link>
+        <Link to={`/inventory`}>Cancel</Link>
         <button type="submit">Save</button>
       </form>
     </>
