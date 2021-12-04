@@ -3,17 +3,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
-type NewInventoryItem = {
-  warehouseID: string;
-  warehouseName: string;
-  itemName: string;
-  description: string;
-  category: string;
-  status: string;
-  quantity: number;
-  itemId: string | undefined;
-};
-
 export default function InventoryItemEdit(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
@@ -23,6 +12,9 @@ export default function InventoryItemEdit(): ReactElement {
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
+    if (!inventoryItemID) {
+      return;
+    }
     const selectedWarehouseName = e.target.warehouseName.value;
     if (!selectedWarehouseName) {
       return;
@@ -48,7 +40,7 @@ export default function InventoryItemEdit(): ReactElement {
     if (isNaN(+e.target.quantity.value) || e.target.quantity.value < 0) {
       return;
     }
-    const itemInformation: NewInventoryItem = {
+    const itemInformation: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
       itemName: e.target.itemName.value,
@@ -56,7 +48,7 @@ export default function InventoryItemEdit(): ReactElement {
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
       quantity: +e.target.quantity.value,
-      itemId: inventoryItemID,
+      id: inventoryItemID,
     };
 
     console.log(itemInformation);

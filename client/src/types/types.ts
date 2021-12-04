@@ -15,7 +15,7 @@ export type WarehouseProfile = {
 };
 
 export type InventoryItemInfo = {
-  id: string;
+  id?: string;
   warehouseID: string;
   warehouseName: string;
   itemName: string;

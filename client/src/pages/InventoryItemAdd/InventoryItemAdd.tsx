@@ -1,17 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { WarehouseProfile } from "../../types/types";
-
-type NewInventoryItem = {
-  warehouseID: string;
-  warehouseName: string;
-  itemName: string;
-  description: string;
-  category: string;
-  status: string;
-  quantity: number;
-};
+import { WarehouseProfile, InventoryItemInfo } from "../../types/types";
 
 export default function InventoryItemAdd(): ReactElement {
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
@@ -44,7 +34,7 @@ export default function InventoryItemAdd(): ReactElement {
     if (isNaN(+e.target.quantity.value) || e.target.quantity.value < 0) {
       return;
     }
-    const newInventoryItem: NewInventoryItem = {
+    const newInventoryItem: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
       itemName: e.target.itemName.value,
