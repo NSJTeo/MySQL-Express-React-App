@@ -4,7 +4,7 @@ import axios from "axios";
 import { WarehouseProfile } from "../../types/types";
 
 type NewInventoryItem = {
-  warehouseId: string;
+  warehouseID: string;
   warehouseName: string;
   itemName: string;
   description: string;
@@ -45,7 +45,7 @@ export default function InventoryItemAdd(): ReactElement {
       return;
     }
     const newInventoryItem: NewInventoryItem = {
-      warehouseId: selectedWarehouse.id,
+      warehouseID: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
       itemName: e.target.itemName.value,
       description: e.target.description.value,

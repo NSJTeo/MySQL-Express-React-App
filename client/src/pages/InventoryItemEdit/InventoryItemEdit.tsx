@@ -3,6 +3,16 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
+type NewInventoryItem = {
+  warehouseID: string;
+  warehouseName: string;
+  itemName: string;
+  description: string;
+  category: string;
+  status: string;
+  quantity: number;
+};
+
 export default function InventoryItemEdit(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
@@ -10,18 +20,61 @@ export default function InventoryItemEdit(): ReactElement {
   const { inventoryItemID } = useParams();
   const navigate = useNavigate();
 
+  const handleSubmit = (e: any): void => {
+    e.preventDefault();
+    const selectedWarehouseName = e.target.warehouseName.value;
+    if (!selectedWarehouseName) {
+      return;
+    }
+    const selectedWarehouse: WarehouseProfile | undefined = warehouses.find(
+      (warehouse) => warehouse.name === selectedWarehouseName
+    );
+    if (!selectedWarehouse) {
+      return;
+    }
+    if (!e.target.itemName.value) {
+      return;
+    }
+    if (!e.target.description.value) {
+      return;
+    }
+    if (!e.target.category.value) {
+      return;
+    }
+    if (!e.target.status.value) {
+      return;
+    }
+    if (isNaN(+e.target.quantity.value) || e.target.quantity.value < 0) {
+      return;
+    }
+    const itemInformation: NewInventoryItem = {
+      warehouseID: selectedWarehouse.id,
+      warehouseName: selectedWarehouse.name,
+      itemName: e.target.itemName.value,
+      description: e.target.description.value,
+      category: e.target.category.value,
+      status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
+      quantity: +e.target.quantity.value,
+    };
+
+    axios
+      .put(
+        `http://localhost:8080/inventory/${inventoryItemID}`,
+        itemInformation
+      )
+      .then((response) => {
+        console.log(response.data);
+        navigate(`/inventory/${inventoryItemID}`);
+      });
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/inventory/${inventoryItemID}`)
       .then((response) => {
         setInventoryItem(response.data);
         axios.get(`http://localhost:8080/warehouses`).then((response) => {
-          let warehouses = response.data;
-          warehouses = warehouses.filter(
-            (warehouse: WarehouseProfile) =>
-              warehouse.name !== inventoryItem?.warehouseName
-          );
-          setWarehouses(warehouses);
+          setWarehouses(response.data);
         });
       });
   }, [inventoryItemID]);
@@ -42,20 +95,25 @@ export default function InventoryItemEdit(): ReactElement {
     (category) => category !== inventoryItem.category
   );
 
+  const filteredWarehouses = warehouses.filter(
+    (warehouse: WarehouseProfile) =>
+      warehouse.name !== inventoryItem?.warehouseName
+  );
+
   return (
     <>
       <div>
         <Link to={`/inventory/${inventoryItemID}`}>Back</Link>
         <h1>Edit Inventory Item</h1>
       </div>
-      <form>
+      <form onSubmit={(e: any) => handleSubmit(e)}>
         <h2>Item Details</h2>
         <label>Item Name</label>
-        <input defaultValue={inventoryItem.itemName} />
+        <input defaultValue={inventoryItem.itemName} name="itemName" />
         <label>Description</label>
-        <textarea defaultValue={inventoryItem.description} />
+        <textarea defaultValue={inventoryItem.description} name="description" />
         <label>Category</label>
-        <select>
+        <select name="category">
           <option value={inventoryItem.category}>
             {inventoryItem.category}
           </option>
@@ -66,28 +124,28 @@ export default function InventoryItemEdit(): ReactElement {
         <h2>Item Availability</h2>
         <div>
           {inventoryItem.quantity ? (
-            <input name="availability" type="radio" defaultChecked />
+            <input name="status" type="radio" defaultChecked />
           ) : (
-            <input name="availability" type="radio" />
+            <input name="status" type="radio" />
           )}
           <label>In Stock</label>
         </div>
         <div>
           {inventoryItem.quantity ? (
-            <input name="availability" type="radio" />
+            <input name="status" type="radio" />
           ) : (
-            <input name="availability" type="radio" defaultChecked />
+            <input name="status" type="radio" defaultChecked />
           )}
           <label>Out of Stock</label>
         </div>
         <label>Quantity</label>
-        <input defaultValue={inventoryItem.quantity} />
+        <input defaultValue={inventoryItem.quantity} name="quantity" />
         <label>Warehouse</label>
-        <select>
+        <select name="warehouseName">
           <option value={inventoryItem.warehouseName}>
             {inventoryItem.warehouseName}
           </option>
-          {warehouses.map((warehouse) => {
+          {filteredWarehouses.map((warehouse) => {
             return <option value={warehouse.name}>{warehouse.name}</option>;
           })}
         </select>
