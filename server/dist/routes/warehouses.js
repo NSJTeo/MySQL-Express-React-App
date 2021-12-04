@@ -65,12 +65,14 @@ router
     .delete((req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
-    const filteredWarehouses = parsedWarehouses.filter((parsedWarehouse) => parsedWarehouse.id !== req.params.warehouseId);
+    const filteredWarehouses = parsedWarehouses.filter((parsedWarehouse) => {
+        return parsedWarehouse.id !== req.params.warehouseId;
+    });
     fs_1.default.writeFileSync("./data/warehouses.json", JSON.stringify(filteredWarehouses));
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     const parsedInventory = JSON.parse(inventory);
     const filteredInventory = parsedInventory.filter((parsedInventoryItem) => {
-        parsedInventoryItem.warehouseID !== req.params.warehouseId;
+        return parsedInventoryItem.warehouseID !== req.params.warehouseId;
     });
     fs_1.default.writeFileSync("./data/inventories.json", JSON.stringify(filteredInventory));
     res.send("deleted!");

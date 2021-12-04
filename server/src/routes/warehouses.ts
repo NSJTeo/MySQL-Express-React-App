@@ -81,8 +81,9 @@ router
     const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
     const filteredWarehouses = parsedWarehouses.filter(
-      (parsedWarehouse: { id: string }) =>
-        parsedWarehouse.id !== req.params.warehouseId
+      (parsedWarehouse: any) => {
+        return parsedWarehouse.id !== req.params.warehouseId;
+      }
     );
     fs.writeFileSync(
       "./data/warehouses.json",
@@ -92,7 +93,7 @@ router
     const parsedInventory = JSON.parse(inventory);
     const filteredInventory = parsedInventory.filter(
       (parsedInventoryItem: any) => {
-        parsedInventoryItem.warehouseID !== req.params.warehouseId;
+        return parsedInventoryItem.warehouseID !== req.params.warehouseId;
       }
     );
     fs.writeFileSync(
