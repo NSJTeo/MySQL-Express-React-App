@@ -1,40 +1,60 @@
-import React, { ReactElement } from "react";
+import axios from "axios";
+import React, { ReactElement, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { WarehouseProfile } from "../../types/types";
 
 export default function WarehouseAdd(): ReactElement {
   const navigate = useNavigate();
+  const formRef: any = useRef(null);
 
-  const handleCancel = () => {
-    navigate("/");
+  const handleClick = () => {
+    const form = formRef.current;
+    const newWarehouse: WarehouseProfile = {
+      name: form.name.value,
+      address: form.address.value,
+      country: form.country.value,
+      city: form.city.value,
+      contact: {
+        name: form.contactName.value,
+        position: form.contactPosition.value,
+        phone: form.contactPhoneNumber.value,
+        email: form.contactEmailAddress.value,
+      },
+    };
+    console.log(newWarehouse);
+    axios.post("http://localhost:8080/warehouses", newWarehouse).then(() => {
+      navigate("/");
+    });
   };
-
   return (
     <>
       <div>
         <Link to="/">Back</Link>
         <h1>Add New Warehouse</h1>
       </div>
-      <form>
+      <form ref={formRef}>
         <h2>Warehouse Details</h2>
         <label>Warehouse Name</label>
-        <input />
+        <input name="name" />
         <label>Street Address</label>
-        <input />
+        <input name="address" />
         <label>City</label>
-        <input />
+        <input name="city" />
         <label>Country</label>
-        <input />
+        <input name="country" />
         <h2>Contact Details</h2>
         <label>Contact Name</label>
-        <input />
+        <input name="contactName" />
         <label>Position</label>
-        <input />
+        <input name="contactPosition" />
         <label>Phone Number</label>
-        <input />
+        <input name="contactPhoneNumber" />
         <label>Email</label>
-        <input />
+        <input name="contactEmailAddress" />
         <Link to="/">Cancel</Link>
-        <button type="submit">+ Add New Warehouse</button>
+        <button type="button" onClick={handleClick}>
+          + Add New Warehouse
+        </button>
       </form>
     </>
   );

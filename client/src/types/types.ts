@@ -6,7 +6,7 @@ type Contact = {
 };
 
 export type WarehouseProfile = {
-  id: string;
+  id?: string;
   name: string;
   address: string;
   city: string;
@@ -16,7 +16,7 @@ export type WarehouseProfile = {
 
 export type InventoryItemInfo = {
   id?: string;
-  warehouseID: string;
+  warehouseID?: string;
   warehouseName: string;
   itemName: string;
   description: string;
