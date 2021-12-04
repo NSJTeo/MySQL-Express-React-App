@@ -9,6 +9,30 @@ export default function WarehouseAdd(): ReactElement {
 
   const handleClick = () => {
     const form = formRef.current;
+    if (!form.name.value) {
+      return;
+    }
+    if (!form.address.value) {
+      return;
+    }
+    if (!form.country.value) {
+      return;
+    }
+    if (!form.city.value) {
+      return;
+    }
+    if (!form.contactName.value) {
+      return;
+    }
+    if (!form.contactPosition.value) {
+      return;
+    }
+    if (!form.contactPhoneNumber.value) {
+      return;
+    }
+    if (!form.contactEmailAddress.value) {
+      return;
+    }
     const newWarehouse: WarehouseProfile = {
       name: form.name.value,
       address: form.address.value,
@@ -21,7 +45,6 @@ export default function WarehouseAdd(): ReactElement {
         email: form.contactEmailAddress.value,
       },
     };
-    console.log(newWarehouse);
     axios.post("http://localhost:8080/warehouses", newWarehouse).then(() => {
       navigate("/");
     });
