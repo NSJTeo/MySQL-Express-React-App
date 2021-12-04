@@ -58,12 +58,12 @@ router
     );
     res.send(warehouse);
   })
-  .put((req, res) => {
+  .put((req: any, res) => {
     const warehouses = fs.readFileSync("./data/warehouses.json", "utf-8");
+    // type needed
     const parsedWarehouses = JSON.parse(warehouses);
     let warehouse = parsedWarehouses.find(
-      (parsedWarehouse: { id: string }) =>
-        parsedWarehouse.id === req.params.warehouseId
+      (parsedWarehouse: any) => parsedWarehouse.id === req.body.id
     );
     for (const property in req.body) {
       if (!req.body[property]) {

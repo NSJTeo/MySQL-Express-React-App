@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { WarehouseProfile } from "../../types/types";
 import axios from "axios";
@@ -15,6 +15,31 @@ export default function WarehouseEdit(): ReactElement {
       });
   }, [warehouseID]);
 
+  const formRef: any = useRef(null);
+
+  const handleClick = () => {
+    const form = formRef.current;
+    const warehouseInfo: WarehouseProfile = {
+      id: warehouseID,
+      name: form.name.value,
+      address: form.address.value,
+      city: form.city.value,
+      country: form.country.value,
+      contact: {
+        name: form.contactName.value,
+        position: form.contactPosition.value,
+        phone: form.contactPhoneNumber.value,
+        email: form.contactEmailAddress.value,
+      },
+    };
+    console.log(warehouseInfo);
+    axios
+      .put(`http://localhost:8080/warehouses/${warehouseID}`, warehouseInfo)
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
+
   if (!warehouseDetails) {
     return <p>Loading</p>;
   }
@@ -25,27 +50,41 @@ export default function WarehouseEdit(): ReactElement {
         <Link to={`/warehouse/${warehouseDetails.id}`}>Back</Link>
         <h1>Edit Warehouse</h1>
       </div>
-      <form>
+      <form ref={formRef}>
         <h2>Warehouse Details</h2>
         <label>Warehouse Name</label>
-        <input defaultValue={warehouseDetails.name} />
+        <input defaultValue={warehouseDetails.name} name="name" />
         <label>Street Address</label>
-        <input defaultValue={warehouseDetails.address} />
+        <input defaultValue={warehouseDetails.address} name="address" />
         <label>City</label>
-        <input defaultValue={warehouseDetails.city} />
+        <input defaultValue={warehouseDetails.city} name="city" />
         <label>Country</label>
-        <input defaultValue={warehouseDetails.country} />
+        <input defaultValue={warehouseDetails.country} name="country" />
         <h2>Contact Details</h2>
         <label>Contact Name</label>
-        <input defaultValue={warehouseDetails.contact.name} />
+        <input
+          defaultValue={warehouseDetails.contact.name}
+          name="contactName"
+        />
         <label>Position</label>
-        <input defaultValue={warehouseDetails.contact.position} />
+        <input
+          defaultValue={warehouseDetails.contact.position}
+          name="contactPosition"
+        />
         <label>Phone Number</label>
-        <input defaultValue={warehouseDetails.contact.phone} />
+        <input
+          defaultValue={warehouseDetails.contact.phone}
+          name="contactPhoneNumber"
+        />
         <label>Email</label>
-        <input defaultValue={warehouseDetails.contact.email} />
+        <input
+          defaultValue={warehouseDetails.contact.email}
+          name="contactEmailAddress"
+        />
         <Link to={`/warehouse/${warehouseDetails.id}`}>Cancel</Link>
-        <button type="submit">Save</button>
+        <button type="button" onClick={handleClick}>
+          Save
+        </button>
       </form>
     </>
   );
