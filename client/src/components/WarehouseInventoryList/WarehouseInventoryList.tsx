@@ -4,10 +4,12 @@ import WarehouseInventoryListItem from "../WarehouseInventoryListItem/WarehouseI
 
 interface Props {
   inventoryItems: InventoryItemInfo[];
+  handleDelete: Function;
 }
 
 export default function WarehouseInventoryList({
   inventoryItems,
+  handleDelete,
 }: Props): ReactElement {
   return (
     <ul>
@@ -16,6 +18,7 @@ export default function WarehouseInventoryList({
           <WarehouseInventoryListItem
             key={inventoryItem.id}
             inventoryItem={inventoryItem}
+            handleDelete={handleDelete}
           />
         );
       })}

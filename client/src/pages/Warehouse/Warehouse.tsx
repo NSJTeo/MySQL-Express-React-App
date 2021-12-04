@@ -28,6 +28,18 @@ export default function Warehouse(): ReactElement {
     return <p>Loading</p>;
   }
 
+  const handleDelete = (inventoryItemID: string) => {
+    axios
+      .delete(`http://localhost:8080/inventory/${inventoryItemID}`)
+      .then((response) => {
+        axios
+          .get(`http://localhost:8080/warehouses/${warehouseID}/inventory`)
+          .then((response) => {
+            setInventoryItems(response.data);
+          });
+      });
+  };
+
   return (
     <>
       <div>
@@ -53,7 +65,10 @@ export default function Warehouse(): ReactElement {
           <p>{warehouse.contact.email}</p>
         </div>
       </div>
-      <WarehouseInventoryList inventoryItems={inventoryItems} />
+      <WarehouseInventoryList
+        inventoryItems={inventoryItems}
+        handleDelete={handleDelete}
+      />
     </>
   );
 }

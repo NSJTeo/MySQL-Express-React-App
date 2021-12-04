@@ -2,7 +2,6 @@ import React, { ReactElement } from "react";
 import { WarehouseProfile } from "../../types/types";
 import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import axios from "axios";
 
 interface Props {
   warehouse: WarehouseProfile;
