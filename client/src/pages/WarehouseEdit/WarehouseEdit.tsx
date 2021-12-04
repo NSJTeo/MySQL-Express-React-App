@@ -16,9 +16,11 @@ export default function WarehouseEdit(): ReactElement {
       });
   }, [warehouseID]);
 
+  // need ref type
   const formRef: any = useRef(null);
 
   const handleClick = () => {
+    // need form type
     const form = formRef.current;
     const warehouseInfo: WarehouseProfile = {
       id: warehouseID,

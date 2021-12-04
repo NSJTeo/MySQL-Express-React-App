@@ -38,7 +38,9 @@ export default function Warehouse(): ReactElement {
       <div>
         <div>
           <p>WAREHOUSE ADDRESS:</p>
-          <p>{warehouse.address}</p>
+          <p>
+            {warehouse.address}, {warehouse.city}, {warehouse.country}
+          </p>
         </div>
         <div>
           <p>CONTACT NAME:</p>
