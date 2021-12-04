@@ -48,6 +48,7 @@ router
     .put((req, res) => {
     const inventory = fs_1.default.readFileSync("./data/inventories.json", "utf-8");
     const parsedInventory = JSON.parse(inventory);
+    // research this, replace any type
     let item = parsedInventory.find((parsedItem) => parsedItem.id === req.params.itemId);
     for (const property in req.body) {
         if (!req.body[property] && isNaN(req.body.quantity)) {

@@ -4,6 +4,17 @@ import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
 
+export type InventoryItem = {
+  id: string;
+  warehouseID: string;
+  warehouseName: string;
+  itemName: string;
+  description: string;
+  category: string;
+  status: string;
+  quantity: number;
+};
+
 router
   .route("/")
   .get((_req, res) => {
@@ -14,7 +25,7 @@ router
     res.send(inventory);
   })
   .post((req, res) => {
-    const newItem = {
+    const newItem: InventoryItem = {
       id: uuidv4(),
       warehouseID: req.body.warehouseID,
       warehouseName: req.body.warehouseName,
@@ -28,7 +39,7 @@ router
       "./data/inventories.json",
       "utf-8"
     );
-    const parsedInventory: object[] = JSON.parse(inventory);
+    const parsedInventory: InventoryItem[] = JSON.parse(inventory);
     parsedInventory.push(newItem);
     fs.writeFileSync(
       "./data/inventories.json",
@@ -44,8 +55,8 @@ router
       "./data/inventories.json",
       "utf-8"
     );
-    const parsedInventory: any[] = JSON.parse(inventory);
-    const item: object | undefined = parsedInventory.find(
+    const parsedInventory: InventoryItem[] = JSON.parse(inventory);
+    const item: InventoryItem | undefined = parsedInventory.find(
       (parsedItem: { id: string }) => parsedItem.id === req.params.itemId
     );
     res.send(item);
@@ -55,9 +66,9 @@ router
       "./data/inventories.json",
       "utf-8"
     );
-    const parsedInventory: any[] = JSON.parse(inventory);
-    const filteredInventory: object | undefined = parsedInventory.filter(
-      (parsedItem: { id: string }) => parsedItem.id !== req.params.itemId
+    const parsedInventory: InventoryItem[] = JSON.parse(inventory);
+    const filteredInventory: InventoryItem[] = parsedInventory.filter(
+      (parsedItem: InventoryItem) => parsedItem.id !== req.params.itemId
     );
     fs.writeFileSync(
       "./data/inventories.json",
@@ -70,9 +81,10 @@ router
       "./data/inventories.json",
       "utf-8"
     );
-    const parsedInventory: any[] = JSON.parse(inventory);
-    let item = parsedInventory.find(
-      (parsedItem) => parsedItem.id === req.params.itemId
+    const parsedInventory: any = JSON.parse(inventory);
+    // research this, replace any type
+    let item: any = parsedInventory.find(
+      (parsedItem: InventoryItem) => parsedItem.id === req.params.itemId
     );
     for (const property in req.body) {
       if (!req.body[property] && isNaN(req.body.quantity)) {

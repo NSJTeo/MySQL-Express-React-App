@@ -50,7 +50,6 @@ router
 })
     .put((req, res) => {
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
-    // type needed
     const parsedWarehouses = JSON.parse(warehouses);
     let warehouse = parsedWarehouses.find((parsedWarehouse) => parsedWarehouse.id === req.body.id);
     for (const property in req.body) {
