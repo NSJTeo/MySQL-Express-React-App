@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function WarehouseAdd(): ReactElement {
   const navigate = useNavigate();
@@ -11,9 +11,7 @@ export default function WarehouseAdd(): ReactElement {
   return (
     <>
       <div>
-        <button type="button" onClick={handleCancel}>
-          Back
-        </button>
+        <Link to="/">Back</Link>
         <h1>Add New Warehouse</h1>
       </div>
       <form>
@@ -35,9 +33,7 @@ export default function WarehouseAdd(): ReactElement {
         <input />
         <label>Email</label>
         <input />
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+        <Link to="/">Cancel</Link>
         <button type="submit">+ Add New Warehouse</button>
       </form>
     </>
