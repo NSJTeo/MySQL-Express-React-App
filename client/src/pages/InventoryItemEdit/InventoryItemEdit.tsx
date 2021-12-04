@@ -51,14 +51,12 @@ export default function InventoryItemEdit(): ReactElement {
       id: inventoryItemID,
     };
 
-    console.log(itemInformation);
     axios
       .put(
         `http://localhost:8080/inventory/${inventoryItemID}`,
         itemInformation
       )
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         navigate(`/inventory/${inventoryItemID}`);
       });
   };
@@ -87,7 +85,7 @@ export default function InventoryItemEdit(): ReactElement {
   ];
 
   categories = categories.filter(
-    (category) => category !== inventoryItem.category
+    (category: string) => category !== inventoryItem.category
   );
 
   const filteredWarehouses = warehouses.filter(
@@ -112,7 +110,7 @@ export default function InventoryItemEdit(): ReactElement {
           <option value={inventoryItem.category}>
             {inventoryItem.category}
           </option>
-          {categories.map((category) => {
+          {categories.map((category: string) => {
             return <option value={category}>{category}</option>;
           })}
         </select>
@@ -140,7 +138,7 @@ export default function InventoryItemEdit(): ReactElement {
           <option value={inventoryItem.warehouseName}>
             {inventoryItem.warehouseName}
           </option>
-          {filteredWarehouses.map((warehouse) => {
+          {filteredWarehouses.map((warehouse: WarehouseProfile) => {
             return <option value={warehouse.name}>{warehouse.name}</option>;
           })}
         </select>

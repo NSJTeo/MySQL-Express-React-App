@@ -19,7 +19,7 @@ export default function WarehouseEdit(): ReactElement {
   // need ref type
   const formRef: any = useRef(null);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     // need form type
     const form = formRef.current;
     const warehouseInfo: WarehouseProfile = {
@@ -35,7 +35,7 @@ export default function WarehouseEdit(): ReactElement {
         email: form.contactEmailAddress.value,
       },
     };
-    console.log(warehouseInfo);
+
     axios
       .put(`http://localhost:8080/warehouses/${warehouseID}`, warehouseInfo)
       .then(() => {

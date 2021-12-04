@@ -11,7 +11,7 @@ export default function WarehouseInventoryListItem({
   inventoryItem,
   handleDelete,
 }: Props): ReactElement {
-  const handleClick = () => {
+  const handleClick = (): void => {
     handleDelete(inventoryItem.id);
   };
 

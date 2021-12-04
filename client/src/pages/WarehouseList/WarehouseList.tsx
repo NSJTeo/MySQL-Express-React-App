@@ -14,7 +14,7 @@ export default function WarehouseList(): ReactElement {
     });
   }, []);
 
-  const handleDelete = (warehouseID: string) => {
+  const handleDelete = (warehouseID: string): void => {
     axios.delete(`http://localhost:8080/warehouses/${warehouseID}`).then(() => {
       axios.get("http://localhost:8080/warehouses").then((response) => {
         setWarehouses(response.data);
@@ -27,7 +27,7 @@ export default function WarehouseList(): ReactElement {
       <WarehouseListSearchBar />
       <div>
         <ul>
-          {warehouses.map((warehouse) => {
+          {warehouses.map((warehouse: WarehouseProfile) => {
             return (
               <WarehouseListItem
                 key={warehouse.id}

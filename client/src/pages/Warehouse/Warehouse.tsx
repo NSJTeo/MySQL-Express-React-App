@@ -28,7 +28,7 @@ export default function Warehouse(): ReactElement {
     return <p>Loading</p>;
   }
 
-  const handleDelete = (inventoryItemID: string) => {
+  const handleDelete = (inventoryItemID: string): void => {
     axios
       .delete(`http://localhost:8080/inventory/${inventoryItemID}`)
       .then(() => {

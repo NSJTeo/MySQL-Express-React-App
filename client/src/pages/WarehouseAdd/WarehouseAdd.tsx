@@ -7,7 +7,7 @@ export default function WarehouseAdd(): ReactElement {
   const navigate = useNavigate();
   const formRef: any = useRef(null);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     const form = formRef.current;
     if (!form.name.value) {
       return;

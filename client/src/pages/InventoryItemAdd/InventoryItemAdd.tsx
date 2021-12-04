@@ -77,7 +77,7 @@ export default function InventoryItemAdd(): ReactElement {
         <label>Category</label>
         <select name="category">
           <option value="">--Please Select--</option>
-          {categories.map((category) => {
+          {categories.map((category: string) => {
             return <option value={category}>{category}</option>;
           })}
         </select>
@@ -95,7 +95,7 @@ export default function InventoryItemAdd(): ReactElement {
         <label>Warehouse</label>
         <select name="warehouseName">
           <option value="">--Please Select--</option>
-          {warehouses.map((warehouse) => {
+          {warehouses.map((warehouse: WarehouseProfile) => {
             return <option value={warehouse.name}>{warehouse.name}</option>;
           })}
         </select>

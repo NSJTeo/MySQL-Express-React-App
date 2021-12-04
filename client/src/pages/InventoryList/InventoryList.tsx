@@ -13,7 +13,7 @@ export default function InventoryList(): ReactElement {
     });
   }, []);
 
-  const handleDelete = (inventoryID: string) => {
+  const handleDelete = (inventoryID: string): void => {
     axios.delete(`http://localhost:8080/inventory/${inventoryID}`).then(() => {
       axios.get("http://localhost:8080/inventory").then((response) => {
         setInventoryItems(response.data);
@@ -26,7 +26,7 @@ export default function InventoryList(): ReactElement {
       <InventoryListSearchBar />
       <div>
         <ul>
-          {inventoryItems.map((inventoryItem) => {
+          {inventoryItems.map((inventoryItem: InventoryItemInfo) => {
             return (
               <InventoryListItem
                 key={inventoryItem.id}
