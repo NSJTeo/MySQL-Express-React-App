@@ -88,6 +88,17 @@ router
       "./data/warehouses.json",
       JSON.stringify(filteredWarehouses)
     );
+    const inventory = fs.readFileSync("./data/inventories.json", "utf-8");
+    const parsedInventory = JSON.parse(inventory);
+    const filteredInventory = parsedInventory.filter(
+      (parsedInventoryItem: any) => {
+        parsedInventoryItem.warehouseID !== req.params.warehouseId;
+      }
+    );
+    fs.writeFileSync(
+      "./data/inventories.json",
+      JSON.stringify(filteredInventory)
+    );
     res.send("deleted!");
   });
 

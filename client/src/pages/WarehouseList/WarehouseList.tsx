@@ -14,6 +14,14 @@ export default function WarehouseList(): ReactElement {
     });
   }, []);
 
+  const handleDelete = (warehouseID: string) => {
+    axios.delete(`http://localhost:8080/warehouses/${warehouseID}`).then(() => {
+      axios.get("http://localhost:8080/warehouses").then((response) => {
+        setWarehouses(response.data);
+      });
+    });
+  };
+
   return (
     <>
       <WarehouseListSearchBar />
@@ -21,7 +29,11 @@ export default function WarehouseList(): ReactElement {
         <ul>
           {warehouses.map((warehouse) => {
             return (
-              <WarehouseListItem key={warehouse.id} warehouse={warehouse} />
+              <WarehouseListItem
+                key={warehouse.id}
+                warehouse={warehouse}
+                handleDelete={handleDelete}
+              />
             );
           })}
         </ul>
