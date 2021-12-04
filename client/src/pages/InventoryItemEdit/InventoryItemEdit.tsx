@@ -11,6 +11,7 @@ type NewInventoryItem = {
   category: string;
   status: string;
   quantity: number;
+  itemId: string | undefined;
 };
 
 export default function InventoryItemEdit(): ReactElement {
@@ -55,8 +56,10 @@ export default function InventoryItemEdit(): ReactElement {
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
       quantity: +e.target.quantity.value,
+      itemId: inventoryItemID,
     };
 
+    console.log(itemInformation);
     axios
       .put(
         `http://localhost:8080/inventory/${inventoryItemID}`,

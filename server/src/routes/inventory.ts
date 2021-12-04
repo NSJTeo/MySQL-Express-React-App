@@ -72,10 +72,10 @@ router
     );
     const parsedInventory: any[] = JSON.parse(inventory);
     let item = parsedInventory.find(
-      (parsedItem: { id: string }) => parsedItem.id === req.params.itemId
+      (parsedItem) => parsedItem.id === req.params.itemId
     );
     for (const property in req.body) {
-      if (!req.body[property]) {
+      if (!req.body[property] && isNaN(req.body.quantity)) {
         return res.send("error!!!");
       }
       item[property] = req.body[property];
