@@ -22,7 +22,7 @@ export async function up(knex: Knex): Promise<void> {
       table.string("description").notNullable();
       table.string("category").notNullable();
       table
-        .integer("warehouse_id")
+        .string("warehouseID")
         .unsigned()
         .notNullable()
         .references("id")
