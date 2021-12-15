@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-module.exports = {
+const knex = {
   development: {
     client: "mysql",
     connection: {
@@ -12,3 +12,5 @@ module.exports = {
     },
   },
 };
+
+export default knex;

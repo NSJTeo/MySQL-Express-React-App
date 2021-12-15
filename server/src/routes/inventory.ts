@@ -1,6 +1,8 @@
 import express from "express";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
+// import { index } from "../controllers/inventoryController";
+// import {} from "../controllers/warehouseController";
 
 const router = express.Router();
 

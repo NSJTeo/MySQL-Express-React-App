@@ -1,6 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
-module.exports = {
+const knex = {
     development: {
         client: "mysql",
         connection: {
@@ -12,3 +13,4 @@ module.exports = {
         },
     },
 };
+exports.default = knex;

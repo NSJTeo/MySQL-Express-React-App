@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const fs_1 = __importDefault(require("fs"));
 const uuid_1 = require("uuid");
+// import { index } from "../controllers/inventoryController";
+// import {} from "../controllers/warehouseController";
 const router = express_1.default.Router();
 router
     .route("/")
