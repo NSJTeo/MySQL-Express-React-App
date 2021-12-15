@@ -2,11 +2,10 @@ import express from "express";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import * as inventoryController from "../controllers/inventoryController";
-import * as warehouseController from "../controllers/warehouseController";
 
 const router = express.Router();
 
-export type InventoryItem = {
+export interface InventoryItem {
   id: string;
   warehouseID: string;
   name: string;
@@ -14,7 +13,7 @@ export type InventoryItem = {
   category: string;
   status: string;
   quantity: number;
-};
+}
 
 router
   .route("/")

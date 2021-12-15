@@ -1,8 +1,9 @@
 const knex = require("knex")(require("../knexfile").development);
+import { Request, Response } from "express";
 
 // export default "";
 
-export const index = (_req: any, res: any) => {
+export const index = (_req: Request, res: Response) => {
   // knex("inventory") is similar to SELECT * FROM inventory (returns promise)
   knex("inventory")
     .then((data: any) => {

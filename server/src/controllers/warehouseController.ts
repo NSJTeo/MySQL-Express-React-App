@@ -1,11 +1,16 @@
 const knex = require("knex")(require("../knexfile").development);
+import { Request, Response } from "express";
+import { v4 as uuidv4 } from "uuid";
+// import knex from "knex";
+// import development from "../knexfile";
 
-export const index = (_req: any, res: any) => {
+export const index = (_req: Request, res: Response) => {
   // knex("warehouse") is similar to SELECT * FROM warehouse (returns promise)
   knex("warehouse")
     // .select("id", "name", "manager")
     // similar to SELECT id, name, manager FROM warehouse
     .then((data: any) => {
+      console.log(data);
       res.status(200).json(data);
     })
     .catch((err: any) =>
@@ -13,7 +18,7 @@ export const index = (_req: any, res: any) => {
     );
 };
 
-export const singleWarehouse = (req: any, res: any) => {
+export const singleWarehouse = (req: Request, res: Response) => {
   // SELECT * FROM warehouse WHERE id=req.params.id
   knex("warehouse")
     .where({ id: req.params.id })
@@ -25,7 +30,7 @@ export const singleWarehouse = (req: any, res: any) => {
     );
 };
 
-export const warehouseInventories = (req: any, res: any) => {
+export const warehouseInventories = (req: Request, res: Response) => {
   // SELECT * FROM inventory WHERE warehouse_id: req.params.id
   knex("inventory")
     .where({ warehouse_id: req.params.id })
@@ -41,7 +46,7 @@ export const warehouseInventories = (req: any, res: any) => {
     );
 };
 
-export const addWarehouse = (req: any, res: any) => {
+export const addWarehouse = (req: Request, res: Response) => {
   // INSERT INTO warehouse VALUES (req.body.key1, req.body.key2, ...)
   knex("warehouse")
     .insert(req.body)
@@ -53,7 +58,7 @@ export const addWarehouse = (req: any, res: any) => {
     );
 };
 
-export const updateWarehouse = (req: any, res: any) => {
+export const updateWarehouse = (req: Request, res: Response) => {
   // UPDATE warehouse SET req.body WHERE id=req.params.id
   knex("warehouse")
     .update(req.body)
@@ -66,7 +71,7 @@ export const updateWarehouse = (req: any, res: any) => {
     );
 };
 
-export const deleteWarehouse = (req: any, res: any) => {
+export const deleteWarehouse = (req: Request, res: Response) => {
   // DELETE FROM warehouse WHERE id=req.params.id
   knex("warehouse")
     .delete()

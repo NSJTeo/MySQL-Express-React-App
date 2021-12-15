@@ -1,4 +1,4 @@
-export type WarehouseProfile = {
+export interface WarehouseProfile {
   id?: string;
   name: string;
   address: string;
@@ -8,9 +8,9 @@ export type WarehouseProfile = {
   contactPosition: string;
   contactPhone: string;
   contactEmail: string;
-};
+}
 
-export type InventoryItemInfo = {
+export interface InventoryItemInfo {
   id?: string;
   warehouseID?: string;
   warehouseName?: string;
@@ -19,4 +19,4 @@ export type InventoryItemInfo = {
   category: string;
   status: string;
   quantity: number;
-};
+}
