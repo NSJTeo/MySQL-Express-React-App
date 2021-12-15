@@ -15,9 +15,9 @@ exports.index = (_req, res) => {
 exports.singleWarehouse = (req, res) => {
   // SELECT * FROM warehouse WHERE id=req.params.id
   knex("warehouse")
-    .where({ id: req.params.id })
+    .where({ id: req.params.warehouseID })
     .then((data) => {
-      res.status(200).json(data);
+      res.status(200).send(data[0]);
     })
     .catch((err) =>
       res.status(400).send(`Error retrieving warehouse ${req.params.id} ${err}`)
@@ -27,7 +27,7 @@ exports.singleWarehouse = (req, res) => {
 exports.warehouseInventories = (req, res) => {
   // SELECT * FROM inventory WHERE warehouse_id: req.params.id
   knex("inventory")
-    .where({ warehouseID: req.params.id })
+    .where({ warehouseID: req.params.warehouseID })
     .then((data) => {
       res.status(200).json(data);
     })
@@ -55,7 +55,7 @@ exports.updateWarehouse = (req, res) => {
   // UPDATE warehouse SET req.body WHERE id=req.params.id
   knex("warehouse")
     .update(req.body)
-    .where({ id: req.params.id })
+    .where({ id: req.params.warehouseID })
     .then((data) => {
       res.status(200).json(data);
     })
@@ -68,7 +68,7 @@ exports.deleteWarehouse = (req, res) => {
   // DELETE FROM warehouse WHERE id=req.params.id
   knex("warehouse")
     .delete()
-    .where({ id: req.params.id })
+    .where({ id: req.params.warehouseID })
     .then((data) => {
       res.status(200).json(data);
     })

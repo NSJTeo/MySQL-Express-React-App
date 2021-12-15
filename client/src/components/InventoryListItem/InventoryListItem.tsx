@@ -18,9 +18,7 @@ export default function InventoryListItem({
 
   return (
     <div>
-      <Link to={`/inventory/${inventoryItem.id}`}>
-        {inventoryItem.itemName}
-      </Link>
+      <Link to={`/inventory/${inventoryItem.id}`}>{inventoryItem.name}</Link>
       <button onClick={handleClick}>
         <img src={deleteIcon} alt="delete icon" />
       </button>

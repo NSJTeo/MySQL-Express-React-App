@@ -24,7 +24,7 @@ exports.createInventoryItem = (req, res) => {
 
 exports.getItem = (req, res) => {
   knex("inventory")
-    .where({ id: req.params.id })
+    .where({ id: req.params.itemID })
     .then((data) => {
       res.status(200).send(data);
     })
@@ -38,7 +38,7 @@ exports.getItem = (req, res) => {
 exports.deleteItem = (req, res) => {
   knex("inventory")
     .delete()
-    .where({ id: req.params.id })
+    .where({ id: req.params.itemID })
     .then((data) => {
       res.status(200).send(data);
     })
@@ -52,7 +52,7 @@ exports.deleteItem = (req, res) => {
 exports.editItem = (req, res) => {
   knex("inventory")
     .update(req.body)
-    .where({ id: req.params.id })
+    .where({ id: req.params.itemID })
     .then((data) => {
       res.status(200).send(data);
     })

@@ -7,9 +7,9 @@ router
   .route("/")
   .get(warehouseController.index)
   .post(warehouseController.addWarehouse);
-router.get("/:warehouseId/inventory", warehouseController.warehouseInventories);
+router.get("/:warehouseID/inventory", warehouseController.warehouseInventories);
 router
-  .route("/:warehouseId")
+  .route("/:warehouseID")
   .get(warehouseController.singleWarehouse)
   .put(warehouseController.updateWarehouse)
   .delete(warehouseController.deleteWarehouse);

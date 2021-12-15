@@ -17,7 +17,7 @@ export default function WarehouseInventoryListItem({
 
   return (
     <li>
-      <p>{inventoryItem.itemName}</p>
+      <p>{inventoryItem.name}</p>
       <button onClick={handleClick}>
         <img src={deleteIcon} alt="delete icon" />
       </button>
