@@ -21,7 +21,6 @@ exports.up = function (knex) {
       table.string("category").notNullable();
       table
         .string("warehouseID")
-        .unsigned()
         .notNullable()
         .references("id")
         .inTable("warehouse")
