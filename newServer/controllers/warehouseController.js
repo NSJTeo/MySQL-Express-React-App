@@ -6,7 +6,6 @@ exports.index = (_req, res) => {
     // .select("id", "name", "manager")
     // similar to SELECT id, name, manager FROM warehouse
     .then((data) => {
-      console.log(data);
       res.status(200).json(data);
     })
     .catch((err) =>
