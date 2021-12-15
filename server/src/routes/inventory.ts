@@ -1,8 +1,8 @@
 import express from "express";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
-// import { index } from "../controllers/inventoryController";
-// import {} from "../controllers/warehouseController";
+import * as inventoryController from "../controllers/inventoryController";
+import * as warehouseController from "../controllers/warehouseController";
 
 const router = express.Router();
 
@@ -18,13 +18,7 @@ export type InventoryItem = {
 
 router
   .route("/")
-  .get((_req, res) => {
-    const inventory: string = fs.readFileSync(
-      "./data/inventories.json",
-      "utf-8"
-    );
-    res.send(inventory);
-  })
+  .get(inventoryController.index)
   .post((req, res) => {
     const newItem: InventoryItem = {
       id: uuidv4(),
