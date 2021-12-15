@@ -5,20 +5,16 @@ import { InventoryItem } from "./inventory";
 
 const router = express.Router();
 
-type ContactInfo = {
-  name: string;
-  position: string;
-  phone: string;
-  email: string;
-};
-
 type WarehouseInfo = {
   id: string;
   name: string;
   address: string;
   city: string;
   country: string;
-  contact: ContactInfo;
+  managerName: string;
+  managerPosition: string;
+  managerPhone: string;
+  managerEmail: string;
 };
 
 router
@@ -28,20 +24,16 @@ router
     res.send(warehouses);
   })
   .post((req, res) => {
-    const contactInfo: ContactInfo = {
-      name: req.body.contact.name,
-      position: req.body.contact.position,
-      phone: req.body.contact.phone,
-      email: req.body.contact.email,
-    };
-
     const newWarehouse: WarehouseInfo = {
       id: uuidv4(),
       name: req.body.name,
       address: req.body.address,
       city: req.body.city,
       country: req.body.country,
-      contact: contactInfo,
+      managerName: req.body.managerName,
+      managerPosition: req.body.managerPosition,
+      managerPhone: req.body.managerPhone,
+      managerEmail: req.body.managerEmail,
     };
 
     const warehouses: string = fs.readFileSync(

@@ -14,19 +14,16 @@ router
     res.send(warehouses);
 })
     .post((req, res) => {
-    const contactInfo = {
-        name: req.body.contact.name,
-        position: req.body.contact.position,
-        phone: req.body.contact.phone,
-        email: req.body.contact.email,
-    };
     const newWarehouse = {
         id: (0, uuid_1.v4)(),
         name: req.body.name,
         address: req.body.address,
         city: req.body.city,
         country: req.body.country,
-        contact: contactInfo,
+        managerName: req.body.managerName,
+        managerPosition: req.body.managerPosition,
+        managerPhone: req.body.managerPhone,
+        managerEmail: req.body.managerEmail,
     };
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);
