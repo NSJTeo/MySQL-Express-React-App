@@ -7,7 +7,7 @@ const router = express.Router();
 export type InventoryItem = {
   id: string;
   warehouseID: string;
-  itemName: string;
+  name: string;
   description: string;
   category: string;
   status: string;
@@ -27,7 +27,7 @@ router
     const newItem: InventoryItem = {
       id: uuidv4(),
       warehouseID: req.body.warehouseID,
-      itemName: req.body.itemName,
+      name: req.body.itemName,
       description: req.body.description,
       category: req.body.category,
       status: req.body.status,

@@ -20,10 +20,10 @@ router
         address: req.body.address,
         city: req.body.city,
         country: req.body.country,
-        managerName: req.body.managerName,
-        managerPosition: req.body.managerPosition,
-        managerPhone: req.body.managerPhone,
-        managerEmail: req.body.managerEmail,
+        contactName: req.body.managerName,
+        contactPosition: req.body.managerPosition,
+        contactPhone: req.body.managerPhone,
+        contactEmail: req.body.managerEmail,
     };
     const warehouses = fs_1.default.readFileSync("./data/warehouses.json", "utf-8");
     const parsedWarehouses = JSON.parse(warehouses);

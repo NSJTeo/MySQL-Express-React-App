@@ -9,12 +9,12 @@ export async function up(knex: Knex): Promise<void> {
       table.string("city").notNullable();
       table.string("country").notNullable();
       table
-        .string("managerPosition")
+        .string("contactPosition")
         .notNullable()
         .defaultTo("Warehouse Manager");
-      table.string("managerName").notNullable();
-      table.string("managerPhone").notNullable();
-      table.string("managerEmail").notNullable();
+      table.string("contactName").notNullable();
+      table.string("contactPhone").notNullable();
+      table.string("contactEmail").notNullable();
     })
     .createTable("inventory", (table) => {
       table.string("id").primary();

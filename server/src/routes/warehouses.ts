@@ -11,10 +11,10 @@ type WarehouseInfo = {
   address: string;
   city: string;
   country: string;
-  managerName: string;
-  managerPosition: string;
-  managerPhone: string;
-  managerEmail: string;
+  contactName: string;
+  contactPosition: string;
+  contactPhone: string;
+  contactEmail: string;
 };
 
 router
@@ -30,10 +30,10 @@ router
       address: req.body.address,
       city: req.body.city,
       country: req.body.country,
-      managerName: req.body.managerName,
-      managerPosition: req.body.managerPosition,
-      managerPhone: req.body.managerPhone,
-      managerEmail: req.body.managerEmail,
+      contactName: req.body.managerName,
+      contactPosition: req.body.managerPosition,
+      contactPhone: req.body.managerPhone,
+      contactEmail: req.body.managerEmail,
     };
 
     const warehouses: string = fs.readFileSync(

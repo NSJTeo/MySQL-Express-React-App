@@ -17,7 +17,7 @@ router
     const newItem = {
         id: (0, uuid_1.v4)(),
         warehouseID: req.body.warehouseID,
-        itemName: req.body.itemName,
+        name: req.body.itemName,
         description: req.body.description,
         category: req.body.category,
         status: req.body.status,
