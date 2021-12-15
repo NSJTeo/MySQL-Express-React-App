@@ -26,7 +26,7 @@ exports.getItem = (req, res) => {
   knex("inventory")
     .where({ id: req.params.itemID })
     .then((data) => {
-      res.status(200).send(data);
+      res.status(200).send(data[0]);
     })
     .catch((err) =>
       res

@@ -10,7 +10,7 @@ router
   .post(inventoryController.createInventoryItem);
 
 router
-  .route("/itemID")
+  .route("/:itemID")
   .get(inventoryController.getItem)
   .delete(inventoryController.deleteItem)
   .put(inventoryController.editItem);
