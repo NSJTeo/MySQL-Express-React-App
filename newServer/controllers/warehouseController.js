@@ -1,10 +1,9 @@
 const knex = require("knex")(require("../knexfile").development);
+const { v4: uuidv4 } = require("uuid");
 
 exports.index = (_req, res) => {
-  // knex("warehouse") is similar to SELECT * FROM warehouse (returns promise)
+  // SELECT * FROM warehouse (returns promise)
   knex("warehouse")
-    // .select("id", "name", "manager")
-    // similar to SELECT id, name, manager FROM warehouse
     .then((data) => {
       res.status(200).json(data);
     })
@@ -28,7 +27,7 @@ exports.singleWarehouse = (req, res) => {
 exports.warehouseInventories = (req, res) => {
   // SELECT * FROM inventory WHERE warehouse_id: req.params.id
   knex("inventory")
-    .where({ warehouse_id: req.params.id })
+    .where({ warehouseID: req.params.id })
     .then((data) => {
       res.status(200).json(data);
     })
@@ -43,6 +42,7 @@ exports.warehouseInventories = (req, res) => {
 
 exports.addWarehouse = (req, res) => {
   // INSERT INTO warehouse VALUES (req.body.key1, req.body.key2, ...)
+  req.body.id = uuidv4();
   knex("warehouse")
     .insert(req.body)
     .then((data) => {
