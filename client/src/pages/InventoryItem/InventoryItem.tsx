@@ -23,7 +23,7 @@ export default function InventoryItem(): ReactElement {
     <>
       <div>
         <Link to="/inventory">Back</Link>
-        <h1>{inventoryItem.itemName}</h1>
+        <h1>{inventoryItem.name}</h1>
         <Link to={`/inventory/${inventoryItem.id}/edit`}>Edit</Link>
       </div>
       <div>

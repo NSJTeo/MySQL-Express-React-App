@@ -56,13 +56,13 @@ export default function Warehouse(): ReactElement {
         </div>
         <div>
           <p>CONTACT NAME:</p>
-          <p>{warehouse.contact.name}</p>
-          <p>{warehouse.contact.position}</p>
+          <p>{warehouse.contactName}</p>
+          <p>{warehouse.contactPosition}</p>
         </div>
         <div>
           <p>CONTACT INFORMATION:</p>
-          <p>{warehouse.contact.phone}</p>
-          <p>{warehouse.contact.email}</p>
+          <p>{warehouse.contactPhone}</p>
+          <p>{warehouse.contactEmail}</p>
         </div>
       </div>
       <WarehouseInventoryList

@@ -43,7 +43,7 @@ export default function InventoryItemEdit(): ReactElement {
     const itemInformation: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
-      itemName: e.target.itemName.value,
+      name: e.target.itemName.value,
       description: e.target.description.value,
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
@@ -102,7 +102,7 @@ export default function InventoryItemEdit(): ReactElement {
       <form onSubmit={(e: any) => handleSubmit(e)}>
         <h2>Item Details</h2>
         <label>Item Name</label>
-        <input defaultValue={inventoryItem.itemName} name="itemName" />
+        <input defaultValue={inventoryItem.name} name="itemName" />
         <label>Description</label>
         <textarea defaultValue={inventoryItem.description} name="description" />
         <label>Category</label>

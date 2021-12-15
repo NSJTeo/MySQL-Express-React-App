@@ -37,7 +37,7 @@ export default function InventoryItemAdd(): ReactElement {
     const newInventoryItem: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
       warehouseName: selectedWarehouse.name,
-      itemName: e.target.itemName.value,
+      name: e.target.itemName.value,
       description: e.target.description.value,
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",

@@ -28,12 +28,10 @@ export default function WarehouseEdit(): ReactElement {
       address: form.address.value,
       city: form.city.value,
       country: form.country.value,
-      contact: {
-        name: form.contactName.value,
-        position: form.contactPosition.value,
-        phone: form.contactPhoneNumber.value,
-        email: form.contactEmailAddress.value,
-      },
+      contactName: form.contactName.value,
+      contactPosition: form.contactPosition.value,
+      contactPhone: form.contactPhone.value,
+      contactEmail: form.contactEmail.value,
     };
 
     axios
@@ -65,24 +63,21 @@ export default function WarehouseEdit(): ReactElement {
         <input defaultValue={warehouseDetails.country} name="country" />
         <h2>Contact Details</h2>
         <label>Contact Name</label>
-        <input
-          defaultValue={warehouseDetails.contact.name}
-          name="contactName"
-        />
+        <input defaultValue={warehouseDetails.contactName} name="contactName" />
         <label>Position</label>
         <input
-          defaultValue={warehouseDetails.contact.position}
+          defaultValue={warehouseDetails.contactPosition}
           name="contactPosition"
         />
         <label>Phone Number</label>
         <input
-          defaultValue={warehouseDetails.contact.phone}
-          name="contactPhoneNumber"
+          defaultValue={warehouseDetails.contactPhone}
+          name="contactPhone"
         />
         <label>Email</label>
         <input
-          defaultValue={warehouseDetails.contact.email}
-          name="contactEmailAddress"
+          defaultValue={warehouseDetails.contactEmail}
+          name="contactEmail"
         />
         <Link to={`/warehouse/${warehouseDetails.id}`}>Cancel</Link>
         <button type="button" onClick={handleClick}>

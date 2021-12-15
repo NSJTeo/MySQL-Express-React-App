@@ -38,13 +38,12 @@ export default function WarehouseAdd(): ReactElement {
       address: form.address.value,
       country: form.country.value,
       city: form.city.value,
-      contact: {
-        name: form.contactName.value,
-        position: form.contactPosition.value,
-        phone: form.contactPhoneNumber.value,
-        email: form.contactEmailAddress.value,
-      },
+      contactName: form.contactName.value,
+      contactPosition: form.contactPosition.value,
+      contactPhone: form.contactPhone.value,
+      contactEmail: form.contactEmail.value,
     };
+
     axios.post("http://localhost:8080/warehouses", newWarehouse).then(() => {
       navigate("/");
     });
@@ -71,9 +70,9 @@ export default function WarehouseAdd(): ReactElement {
         <label>Position</label>
         <input name="contactPosition" />
         <label>Phone Number</label>
-        <input name="contactPhoneNumber" />
+        <input name="contactPhone" />
         <label>Email</label>
-        <input name="contactEmailAddress" />
+        <input name="contactEmail" />
         <Link to="/">Cancel</Link>
         <button type="button" onClick={handleClick}>
           + Add New Warehouse

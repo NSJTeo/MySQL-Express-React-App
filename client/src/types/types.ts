@@ -1,24 +1,20 @@
-type Contact = {
-  name: string;
-  position: string;
-  phone: string;
-  email: string;
-};
-
 export type WarehouseProfile = {
   id?: string;
   name: string;
   address: string;
   city: string;
   country: string;
-  contact: Contact;
+  contactName: string;
+  contactPosition: string;
+  contactPhone: string;
+  contactEmail: string;
 };
 
 export type InventoryItemInfo = {
   id?: string;
   warehouseID?: string;
-  warehouseName: string;
-  itemName: string;
+  warehouseName?: string;
+  name: string;
   description: string;
   category: string;
   status: string;
