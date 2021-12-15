@@ -8,7 +8,6 @@ export default function WarehouseList(): ReactElement {
   const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
 
   useEffect(() => {
-    console.log("use effect");
     axios.get("http://localhost:8080/warehouses").then((response) => {
       setWarehouses(response.data);
     });
