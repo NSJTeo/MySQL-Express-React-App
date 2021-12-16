@@ -40,7 +40,7 @@ exports.deleteItem = (req, res) => {
     .delete()
     .where({ id: req.params.itemID })
     .then((data) => {
-      res.status(200).send(data);
+      res.sendStatus(200);
     })
     .catch((err) =>
       res
