@@ -3,6 +3,9 @@ import { WarehouseProfile, InventoryItemInfo } from "../../types/types";
 import { useParams, Link } from "react-router-dom";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import axios from "axios";
+import "./Warehouse.scss";
+import backArrow from "../../assets/icons/arrow_back-24px.svg";
+import editIcon from "../../assets/icons/edit-white-24px.svg";
 
 export default function Warehouse(): ReactElement {
   const [warehouse, setWarehouse] = useState<WarehouseProfile>();
@@ -41,11 +44,20 @@ export default function Warehouse(): ReactElement {
   };
 
   return (
-    <>
-      <div>
-        <Link to="/">Back</Link>
-        <h1>{warehouse!.name}</h1>
-        <Link to={`/warehouse/${warehouseID}/edit`}>Edit</Link>
+    <div className="warehouse__container">
+      <div className="warehouse__header">
+        <div className="warehouse__back-name-container">
+          <Link to="/" className="warehouse__back-link">
+            <img src={backArrow} alt="" className="warehouse__back-icon" />
+          </Link>
+          <h1 className="warehouse__title">{warehouse.name}</h1>
+        </div>
+        <Link
+          to={`/warehouse/${warehouseID}/edit`}
+          className="warehouse__edit-link"
+        >
+          <img src={editIcon} alt="" className="warehouse__edit-icon" />
+        </Link>
       </div>
       <div>
         <div>
@@ -69,6 +81,6 @@ export default function Warehouse(): ReactElement {
         inventoryItems={inventoryItems}
         handleDelete={handleDelete}
       />
-    </>
+    </div>
   );
 }
