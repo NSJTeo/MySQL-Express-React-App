@@ -1,6 +1,7 @@
 const knex = require("knex")(require("../knexfile").development);
 const { v4: uuidv4 } = require("uuid");
 
+// Update name here & in routes
 exports.index = (_req, res) => {
   // SELECT * FROM warehouse (returns promise)
   knex("warehouse")
@@ -12,6 +13,7 @@ exports.index = (_req, res) => {
     );
 };
 
+// update name here & in routes
 exports.singleWarehouse = (req, res) => {
   // SELECT * FROM warehouse WHERE id=req.params.id
   knex("warehouse")
@@ -24,6 +26,7 @@ exports.singleWarehouse = (req, res) => {
     );
 };
 
+// update name here & in routes
 exports.warehouseInventories = (req, res) => {
   // SELECT * FROM inventory WHERE warehouse_id: req.params.id
   knex("inventory")
@@ -40,24 +43,26 @@ exports.warehouseInventories = (req, res) => {
     );
 };
 
+// update name, validation needed
 exports.addWarehouse = (req, res) => {
   // INSERT INTO warehouse VALUES (req.body.key1, req.body.key2, ...)
   req.body.id = uuidv4();
   knex("warehouse")
     .insert(req.body)
-    .then((data) => {
-      res.status(200).json(data);
+    .then(() => {
+      res.sendStatus(201);
     })
     .catch((err) => res.status(400).send(`Error creating Warehouse: ${err}`));
 };
 
+// update name, validation needed
 exports.updateWarehouse = (req, res) => {
   // UPDATE warehouse SET req.body WHERE id=req.params.id
   knex("warehouse")
     .update(req.body)
     .where({ id: req.params.warehouseID })
-    .then((data) => {
-      res.status(200).json(data);
+    .then(() => {
+      res.sendStatus(201);
     })
     .catch((err) =>
       res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`)
