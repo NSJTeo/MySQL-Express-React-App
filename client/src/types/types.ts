@@ -1,3 +1,5 @@
+// note that id's are created in the server so might not be present when warehouses or items are created on the client
+
 export interface WarehouseProfile {
   id?: string;
   name: string;
