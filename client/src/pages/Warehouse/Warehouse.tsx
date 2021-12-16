@@ -59,22 +59,26 @@ export default function Warehouse(): ReactElement {
           <img src={editIcon} alt="" className="warehouse__edit-icon" />
         </Link>
       </div>
-      <div>
-        <div>
-          <p>WAREHOUSE ADDRESS:</p>
-          <p>
+      <div className="warehouse__info-container">
+        <div className="warehouse__address-container">
+          <p className="warehouse__info-header">WAREHOUSE ADDRESS:</p>
+          <p className="warehouse__address">
             {warehouse.address}, {warehouse.city}, {warehouse.country}
           </p>
         </div>
-        <div>
-          <p>CONTACT NAME:</p>
-          <p>{warehouse.contactName}</p>
-          <p>{warehouse.contactPosition}</p>
-        </div>
-        <div>
-          <p>CONTACT INFORMATION:</p>
-          <p>{warehouse.contactPhone}</p>
-          <p>{warehouse.contactEmail}</p>
+        <div className="warehouse__contact-name-info-container">
+          <div className="warehouse__contact-name-container">
+            <p className="warehouse__info-header">CONTACT NAME:</p>
+            <p className="warehouse__contact-info">{warehouse.contactName}</p>
+            <p className="warehouse__contact-info">
+              {warehouse.contactPosition}
+            </p>
+          </div>
+          <div className="warehouse__contact-info-container">
+            <p className="warehouse__info-header">CONTACT INFORMATION:</p>
+            <p className="warehouse__contact-info">{warehouse.contactPhone}</p>
+            <p className="warehouse__contact-info">{warehouse.contactEmail}</p>
+          </div>
         </div>
       </div>
       <WarehouseInventoryList
