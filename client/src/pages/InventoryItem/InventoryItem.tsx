@@ -1,10 +1,11 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { InventoryItemInfo } from "../../types/types";
+import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
 
 export default function InventoryItem(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
+  const [warehouses, setWarehouses] = useState<WarehouseProfile[]>([]);
   const { inventoryItemID } = useParams();
 
   useEffect(() => {
@@ -12,10 +13,17 @@ export default function InventoryItem(): ReactElement {
       .get(`http://localhost:8080/inventory/${inventoryItemID}`)
       .then((response) => {
         setInventoryItem(response.data);
+        axios.get(`http://localhost:8080/warehouses`).then((response) => {
+          setWarehouses(response.data);
+        });
       });
   }, [inventoryItemID]);
 
-  if (!inventoryItem) {
+  const itemWarehouse = warehouses.find(
+    (warehouse) => warehouse.id === inventoryItem?.id
+  );
+
+  if (!inventoryItem || !itemWarehouse) {
     return <p>Loading</p>;
   }
 
@@ -36,7 +44,7 @@ export default function InventoryItem(): ReactElement {
         <p>QUANTITY:</p>
         <p>{inventoryItem.quantity}</p>
         <p>WAREHOUSE:</p>
-        <p>{inventoryItem.warehouseName}</p>
+        <p>{itemWarehouse.name}</p>
       </div>
     </>
   );

@@ -19,6 +19,9 @@ export default function InventoryItemAdd(): ReactElement {
     if (!selectedWarehouse) {
       return;
     }
+    if (!selectedWarehouse.id) {
+      return;
+    }
     if (!e.target.name.value) {
       return;
     }
