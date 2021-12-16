@@ -2,6 +2,7 @@ import { useState, useEffect, ReactElement } from "react";
 import axios from "axios";
 import WarehouseListItem from "../../components/WarehouseListItem/WarehouseListItem";
 import WarehouseListSearchBar from "../../components/WarehouseListSearchBar/WarehouseListSearchBar";
+import "./WarehouseList.scss";
 import { WarehouseProfile } from "../../types/types";
 
 export default function WarehouseList(): ReactElement {
@@ -22,7 +23,7 @@ export default function WarehouseList(): ReactElement {
   };
 
   return (
-    <>
+    <div className="warehouse-list__container">
       <WarehouseListSearchBar />
       <div>
         <ul>
@@ -37,6 +38,6 @@ export default function WarehouseList(): ReactElement {
           })}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
