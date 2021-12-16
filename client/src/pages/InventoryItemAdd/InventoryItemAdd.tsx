@@ -19,7 +19,7 @@ export default function InventoryItemAdd(): ReactElement {
     if (!selectedWarehouse) {
       return;
     }
-    if (!e.target.itemName.value) {
+    if (!e.target.name.value) {
       return;
     }
     if (!e.target.description.value) {
@@ -36,8 +36,7 @@ export default function InventoryItemAdd(): ReactElement {
     }
     const newInventoryItem: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
-      warehouseName: selectedWarehouse.name,
-      name: e.target.itemName.value,
+      name: e.target.name.value,
       description: e.target.description.value,
       category: e.target.category.value,
       status: +e.target.quantity.value ? "In Stock" : "Out of Stock",
@@ -71,7 +70,7 @@ export default function InventoryItemAdd(): ReactElement {
       <form onSubmit={(e) => handleSubmit(e)}>
         <h2>Item Details</h2>
         <label>Item Name</label>
-        <input name="itemName" />
+        <input name="name" />
         <label>Description</label>
         <textarea name="description" />
         <label>Category</label>
@@ -100,7 +99,7 @@ export default function InventoryItemAdd(): ReactElement {
           })}
         </select>
         <Link to="/inventory">Back</Link>
-        <button>+ Add New Warehouse</button>
+        <button>+ Add New Item</button>
       </form>
     </>
   );
