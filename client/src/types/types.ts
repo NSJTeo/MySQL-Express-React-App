@@ -13,7 +13,6 @@ export interface WarehouseProfile {
 export interface InventoryItemInfo {
   id?: string;
   warehouseID?: string;
-  warehouseName?: string;
   name: string;
   description: string;
   category: string;

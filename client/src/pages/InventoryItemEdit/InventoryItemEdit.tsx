@@ -25,6 +25,9 @@ export default function InventoryItemEdit(): ReactElement {
     if (!selectedWarehouse) {
       return;
     }
+    if (!selectedWarehouse.id) {
+      return;
+    }
     if (!e.target.itemName.value) {
       return;
     }
