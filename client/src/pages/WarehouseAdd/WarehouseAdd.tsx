@@ -27,10 +27,10 @@ export default function WarehouseAdd(): ReactElement {
     if (!form.contactPosition.value) {
       return;
     }
-    if (!form.contactPhoneNumber.value) {
+    if (!form.contactPhone.value) {
       return;
     }
-    if (!form.contactEmailAddress.value) {
+    if (!form.contactEmail.value) {
       return;
     }
     const newWarehouse: WarehouseProfile = {
