@@ -1,15 +1,38 @@
 import { ReactElement } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/logos/InStock-Logo.svg";
+import "./PageHeader.scss";
 
 export default function PageHeader(): ReactElement {
-  // const location = useLocation();
-  // console.log(location.pathname);
-  // use location path name to determine whether Warehouse or Inventory is highlighted
+  const location = useLocation();
+
+  let warehousePage = true;
+  if (location.pathname[1] === "i") {
+    warehousePage = false;
+  }
+
   return (
-    <>
-      <p>Header</p>
-      <Link to="/">Warehouses</Link>
-      <Link to="/inventory">Inventory</Link>
-    </>
+    <div className="header__container">
+      <img src={logo} alt="" className="header__logo" />
+      {warehousePage ? (
+        <div className="header__links">
+          <Link to="/" className="header__link header__link--selected">
+            <p className="header__link-text">Warehouses</p>
+          </Link>
+          <Link to="/inventory" className="header__link">
+            <p className="header__link-text">Inventory</p>
+          </Link>
+        </div>
+      ) : (
+        <div className="header__links">
+          <Link to="/" className="header__link">
+            <p className="header__link-text">Warehouses</p>
+          </Link>
+          <Link to="/inventory" className="header__link header__link--selected">
+            <p className="header__link-text">Inventory</p>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 }
