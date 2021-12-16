@@ -1,0 +1,93 @@
+.warehouse-list-item {
+  &__container {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid black;
+  }
+  &__warehouse-contact-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  &__warehouse-container {
+    width: 50%;
+  }
+  &__contact-container {
+    width: 50%;
+  }
+  &__warehouse-header {
+    line-height: 1rem;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    margin-bottom: 0.25rem;
+  }
+  &__warehouse-link {
+    display: flex;
+    color: blue;
+  }
+  &__warehouse-link-text {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+  &__warehouse-link-icon {
+    width: 1.25rem;
+  }
+  &__contact-header {
+    line-height: 1rem;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    margin-bottom: 0.25rem;
+  }
+  &__contact {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+  &__address-contact-info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.1875rem;
+  }
+  &__address-container {
+    width: 50%;
+  }
+  &__contact-info-container {
+    width: 50%;
+  }
+  &__address-header {
+    line-height: 1rem;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    margin-bottom: 0.25rem;
+  }
+  &__address {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    width: 8rem;
+  }
+  &__contact-info-header {
+    line-height: 1rem;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    margin-bottom: 0.25rem;
+  }
+  &__contact-info {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+  &__btns-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__btn {
+    background: none;
+    border: none;
+    &--delete {
+      width: 0.875rem;
+      height: auto;
+    }
+    &--edit {
+      width: 1.125rem;
+      height: auto;
+    }
+  }
+}
