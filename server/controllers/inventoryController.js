@@ -39,7 +39,7 @@ exports.deleteItem = (req, res) => {
   knex("inventory")
     .delete()
     .where({ id: req.params.itemID })
-    .then((data) => {
+    .then(() => {
       res.sendStatus(200);
     })
     .catch((err) =>
@@ -53,8 +53,8 @@ exports.editItem = (req, res) => {
   knex("inventory")
     .update(req.body)
     .where({ id: req.params.itemID })
-    .then((data) => {
-      res.status(200).send(data);
+    .then(() => {
+      res.sendStatus(200);
     })
     .catch((err) =>
       res

@@ -42,7 +42,6 @@ export default function InventoryItemEdit(): ReactElement {
     }
     const itemInformation: InventoryItemInfo = {
       warehouseID: selectedWarehouse.id,
-      warehouseName: selectedWarehouse.name,
       name: e.target.itemName.value,
       description: e.target.description.value,
       category: e.target.category.value,
@@ -88,9 +87,12 @@ export default function InventoryItemEdit(): ReactElement {
     (category: string) => category !== inventoryItem.category
   );
 
-  const filteredWarehouses = warehouses.filter(
-    (warehouse: WarehouseProfile) =>
-      warehouse.name !== inventoryItem?.warehouseName
+  const currentWarehouse: WarehouseProfile | undefined = warehouses.find(
+    (warehouse) => warehouse.id === inventoryItem.warehouseID
+  );
+
+  const filteredWarehouses: WarehouseProfile[] = warehouses.filter(
+    (warehouse: WarehouseProfile) => warehouse.name !== currentWarehouse?.name
   );
 
   return (
@@ -111,7 +113,11 @@ export default function InventoryItemEdit(): ReactElement {
             {inventoryItem.category}
           </option>
           {categories.map((category: string) => {
-            return <option value={category}>{category}</option>;
+            return (
+              <option value={category} key={category}>
+                {category}
+              </option>
+            );
           })}
         </select>
         <h2>Item Availability</h2>
@@ -135,11 +141,17 @@ export default function InventoryItemEdit(): ReactElement {
         <input defaultValue={inventoryItem.quantity} name="quantity" />
         <label>Warehouse</label>
         <select name="warehouseName">
-          <option value={inventoryItem.warehouseName}>
-            {inventoryItem.warehouseName}
-          </option>
+          {currentWarehouse && (
+            <option value={currentWarehouse.name}>
+              {currentWarehouse.name}
+            </option>
+          )}
           {filteredWarehouses.map((warehouse: WarehouseProfile) => {
-            return <option value={warehouse.name}>{warehouse.name}</option>;
+            return (
+              <option value={warehouse.name} key={warehouse.id}>
+                {warehouse.name}
+              </option>
+            );
           })}
         </select>
         <Link to={`/inventory`}>Cancel</Link>
