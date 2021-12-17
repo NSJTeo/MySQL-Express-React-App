@@ -1,4 +1,4 @@
-.warehouse-list-search-bar {
+.inventory-list-search-bar {
   &__container {
     padding: 1.5rem;
     padding-top: 2rem;
@@ -25,7 +25,7 @@
       line-height: 1.25rem;
     }
   }
-  &__add-warehouse-btn {
+  &__add-new-item-btn {
     display: flex;
     justify-content: center;
     align-items: center;

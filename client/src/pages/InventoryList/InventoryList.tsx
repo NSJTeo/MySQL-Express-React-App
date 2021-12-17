@@ -3,6 +3,7 @@ import { InventoryItemInfo } from "../../types/types";
 import InventoryListSearchBar from "../../components/InventoryListSearchBar/InventoryListSearchBar";
 import InventoryListItem from "../../components/InventoryListItem/InventoryListItem";
 import axios from "axios";
+import "./InventoryList.scss";
 
 export default function InventoryList(): ReactElement {
   const [inventoryItems, setInventoryItems] = useState<InventoryItemInfo[]>([]);
@@ -22,7 +23,7 @@ export default function InventoryList(): ReactElement {
   };
 
   return (
-    <>
+    <div className="inventory-list__container">
       <InventoryListSearchBar />
       <div>
         <ul>
@@ -37,6 +38,6 @@ export default function InventoryList(): ReactElement {
           })}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
