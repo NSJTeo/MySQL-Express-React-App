@@ -19,11 +19,15 @@ export default function InventoryItem(): ReactElement {
       });
   }, [inventoryItemID]);
 
+  if (!inventoryItem) {
+    return <p>Loading</p>;
+  }
+
   const itemWarehouse = warehouses.find(
-    (warehouse) => warehouse.id === inventoryItem?.id
+    (warehouse) => warehouse.id === inventoryItem.warehouseID
   );
 
-  if (!inventoryItem || !itemWarehouse) {
+  if (!itemWarehouse) {
     return <p>Loading</p>;
   }
 
