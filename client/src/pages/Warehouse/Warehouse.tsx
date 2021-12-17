@@ -48,7 +48,7 @@ export default function Warehouse(): ReactElement {
       <div className="warehouse__header">
         <div className="warehouse__back-name-container">
           <Link to="/" className="warehouse__back-link">
-            <img src={backArrow} alt="" className="warehouse__back-icon" />
+            <img src={backArrow} alt="" />
           </Link>
           <h1 className="warehouse__title">{warehouse.name}</h1>
         </div>

@@ -2,6 +2,9 @@ import { ReactElement, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
+import "./InventoryItem.scss";
+import backArrow from "../../assets/icons/arrow_back-24px.svg";
+import editIcon from "../../assets/icons/edit-white-24px.svg";
 
 export default function InventoryItem(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
@@ -31,25 +34,56 @@ export default function InventoryItem(): ReactElement {
     return <p>Loading</p>;
   }
 
+  const inStock = inventoryItem.status === "In Stock";
+
   return (
-    <>
-      <div>
-        <Link to="/inventory">Back</Link>
-        <h1>{inventoryItem.name}</h1>
-        <Link to={`/inventory/${inventoryItem.id}/edit`}>Edit</Link>
+    <div className="inventory-item__container">
+      <div className="inventory-item__header">
+        <div className="inventory-item__back-name-container">
+          <Link to="/inventory" className="inventory-item__back-link">
+            <img src={backArrow} alt="" />
+          </Link>
+          <h1 className="inventory-item__title">{inventoryItem.name}</h1>
+        </div>
+        <Link
+          to={`/inventory/${inventoryItem.id}/edit`}
+          className="inventory-item__edit-link"
+        >
+          <img src={editIcon} alt="" className="inventory-item__edit-icon" />
+        </Link>
       </div>
-      <div>
-        <p>ITEM DESCRIPTION:</p>
-        <p>{inventoryItem.description}</p>
-        <p>CATEGORY:</p>
-        <p>{inventoryItem.category}</p>
-        <p>STATUS:</p>
-        <p>{inventoryItem.status}</p>
-        <p>QUANTITY:</p>
-        <p>{inventoryItem.quantity}</p>
-        <p>WAREHOUSE:</p>
-        <p>{itemWarehouse.name}</p>
+      <div className="inventory-item__info-container">
+        <h2 className="inventory-item__info-header">ITEM DESCRIPTION:</h2>
+        <p className="inventory-item__info inventory-item__info--description">
+          {inventoryItem.description}
+        </p>
+        <h2 className="inventory-item__info-header">CATEGORY:</h2>
+        <p className="inventory-item__info inventory-item__info--category">
+          {inventoryItem.category}
+        </p>
+        <div className="inventory-item__status-qty-container">
+          <div className="inventory-item__status-container">
+            <h2 className="inventory-item__info-header inventory-item__info-header--status">
+              STATUS:
+            </h2>
+            {inStock ? (
+              <p className="inventory-item__status inventory-item__status--in-stock">
+                {inventoryItem.status.toUpperCase()}
+              </p>
+            ) : (
+              <p className="inventory-item__status inventory-item__status--out-of-stock">
+                {inventoryItem.status.toUpperCase()}
+              </p>
+            )}
+          </div>
+          <div className="inventory-item__qty-container">
+            <h2 className="inventory-item__info-header">QUANTITY:</h2>
+            <p className="inventory-item__info">{inventoryItem.quantity}</p>
+          </div>
+        </div>
+        <h2 className="inventory-item__info-header">WAREHOUSE:</h2>
+        <p className="inventory-item__info">{itemWarehouse.name}</p>
       </div>
-    </>
+    </div>
   );
 }
