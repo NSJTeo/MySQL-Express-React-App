@@ -2,6 +2,8 @@
   &__container {
     padding: 1.5rem;
     padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
   }
   &__header {
     font-size: 1.75rem;
@@ -26,12 +28,14 @@
     }
   }
   &__add-warehouse-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     background-color: blue;
-    height: 2.25rem;
+    flex-grow: 1;
     color: white;
     border-radius: 1.25rem;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    padding: 0.5rem;
   }
 }

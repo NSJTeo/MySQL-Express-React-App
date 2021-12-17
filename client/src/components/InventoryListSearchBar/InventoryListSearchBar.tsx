@@ -18,7 +18,7 @@ export default function InventoryListSearchBar(): ReactElement {
         to="/inventory/add"
         className="inventory-list-search-bar__add-new-item-btn"
       >
-        <p>+ Add New Item</p>
+        + Add New Item
       </Link>
     </div>
   );
