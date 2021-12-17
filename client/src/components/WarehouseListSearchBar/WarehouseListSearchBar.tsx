@@ -18,7 +18,7 @@ export default function WarehouseListSearchBar(): ReactElement {
         to="/warehouse/add"
         className="warehouse-list-search-bar__add-warehouse-btn"
       >
-        <p>Add New Warehouse</p>
+        <p>+ Add New Warehouse</p>
       </Link>
     </div>
   );

@@ -13,7 +13,9 @@ export default function PageHeader(): ReactElement {
 
   return (
     <div className="header__container">
-      <img src={logo} alt="" className="header__logo" />
+      <Link to="/">
+        <img src={logo} alt="" className="header__logo" />
+      </Link>
       {warehousePage ? (
         <div className="header__links">
           <Link to="/" className="header__link header__link--selected">

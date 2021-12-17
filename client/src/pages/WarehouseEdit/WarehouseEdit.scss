@@ -1,0 +1,73 @@
+.warehouse-edit {
+  &__container {
+    background-color: white;
+    margin: 0 1rem;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    position: relative;
+    top: -4.25rem;
+  }
+  &__back-title-container {
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem 0 1.5rem 1.75rem;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    margin-left: 0.75rem;
+  }
+  &__form-container {
+    border-top: 1px solid black;
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__form-header {
+    line-height: 1.75rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  &__form-label {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+  &__form-input {
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-radius: 1.25rem;
+    border: 1px solid black;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  &__btns {
+    background: rgba(247, 248, 249, 0.7);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__btn {
+    padding: 0.5rem 0;
+    text-align: center;
+    border-radius: 1.25rem;
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    &--cancel {
+      background: white;
+      margin-right: 1rem;
+      color: #5c667e;
+      border: 1px solid #bdc5d5;
+    }
+    &--save {
+      background: #2e66e6;
+      color: white;
+      border: none;
+    }
+  }
+}
