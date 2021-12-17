@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { ReactElement, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { WarehouseProfile } from "../../types/types";
+import backIcon from "../../assets/icons/arrow_back-24px.svg";
+import "./WarehouseAdd.scss";
 
 export default function WarehouseAdd(): ReactElement {
   const navigate = useNavigate();
@@ -49,35 +51,84 @@ export default function WarehouseAdd(): ReactElement {
     });
   };
   return (
-    <>
-      <div>
-        <Link to="/">Back</Link>
-        <h1>Add New Warehouse</h1>
+    <div className="warehouse-add__container">
+      <div className="warehouse-add__back-title-container">
+        <Link to="/">
+          <img src={backIcon} alt="" />
+        </Link>
+        <h1 className="warehouse-add__title">Add New Warehouse</h1>
       </div>
       <form ref={formRef}>
-        <h2>Warehouse Details</h2>
-        <label>Warehouse Name</label>
-        <input name="name" />
-        <label>Street Address</label>
-        <input name="address" />
-        <label>City</label>
-        <input name="city" />
-        <label>Country</label>
-        <input name="country" />
-        <h2>Contact Details</h2>
-        <label>Contact Name</label>
-        <input name="contactName" />
-        <label>Position</label>
-        <input name="contactPosition" />
-        <label>Phone Number</label>
-        <input name="contactPhone" />
-        <label>Email</label>
-        <input name="contactEmail" />
-        <Link to="/">Cancel</Link>
-        <button type="button" onClick={handleClick}>
-          + Add New Warehouse
-        </button>
+        <div className="warehouse-add__form-container">
+          <h2 className="warehouse-add__form-header">Warehouse Details</h2>
+          <label className="warehouse-add__form-label">Warehouse Name</label>
+          <input
+            name="name"
+            className="warehouse-add__form-input"
+            placeholder="Warehouse Name"
+          />
+          <label className="warehouse-add__form-label">Street Address</label>
+          <input
+            name="address"
+            className="warehouse-add__form-input"
+            placeholder="Street Address"
+          />
+          <label className="warehouse-add__form-label">City</label>
+          <input
+            name="city"
+            className="warehouse-add__form-input"
+            placeholder="City"
+          />
+          <label className="warehouse-add__form-label">Country</label>
+          <input
+            name="country"
+            className="warehouse-add__form-input"
+            placeholder="Country"
+          />
+        </div>
+        <div className="warehouse-add__form-container">
+          <h2 className="warehouse-add__form-header">Contact Details</h2>
+          <label className="warehouse-add__form-label">Contact Name</label>
+          <input
+            name="contactName"
+            className="warehouse-add__form-input"
+            placeholder="Contact Name"
+          />
+          <label className="warehouse-add__form-label">Position</label>
+          <input
+            name="contactPosition"
+            className="warehouse-add__form-input"
+            placeholder="Position"
+          />
+          <label className="warehouse-add__form-label">Phone Number</label>
+          <input
+            name="contactPhone"
+            className="warehouse-add__form-input"
+            placeholder="Phone Number"
+          />
+          <label className="warehouse-add__form-label">Email</label>
+          <input
+            name="contactEmail"
+            className="warehouse-add__form-input"
+            placeholder="Email"
+          />
+        </div>
+        <div className="warehouse-add__btns">
+          <Link
+            to="/"
+            className="warehouse-add__btn warehouse-add__btn--cancel"
+          >
+            Cancel
+          </Link>
+          <button
+            type="button"
+            onClick={handleClick}
+            className="warehouse-add__btn warehouse-add__btn--save"
+          >
+            + Add New Warehouse
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
