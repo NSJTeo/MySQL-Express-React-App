@@ -2,6 +2,8 @@ import { ReactElement, useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { InventoryItemInfo, WarehouseProfile } from "../../types/types";
 import axios from "axios";
+import backIcon from "../../assets/icons/arrow_back-24px.svg";
+import "./InventoryItemEdit.scss";
 
 export default function InventoryItemEdit(): ReactElement {
   const [inventoryItem, setInventoryItem] = useState<InventoryItemInfo>();
@@ -99,67 +101,128 @@ export default function InventoryItemEdit(): ReactElement {
   );
 
   return (
-    <>
-      <div>
-        <Link to={`/inventory`}>Back</Link>
-        <h1>Edit Inventory Item</h1>
+    <div className="inventory-item-edit__container">
+      <div className="inventory-item-edit__back-title-container">
+        <Link to={`/inventory`}>
+          <img src={backIcon} alt="" />
+        </Link>
+        <h1 className="inventory-item-edit__title">Edit Inventory Item</h1>
       </div>
       <form onSubmit={(e: any) => handleSubmit(e)}>
-        <h2>Item Details</h2>
-        <label>Item Name</label>
-        <input defaultValue={inventoryItem.name} name="itemName" />
-        <label>Description</label>
-        <textarea defaultValue={inventoryItem.description} name="description" />
-        <label>Category</label>
-        <select name="category">
-          <option value={inventoryItem.category}>
-            {inventoryItem.category}
-          </option>
-          {categories.map((category: string) => {
-            return (
-              <option value={category} key={category}>
-                {category}
-              </option>
-            );
-          })}
-        </select>
-        <h2>Item Availability</h2>
-        <div>
-          {inventoryItem.quantity ? (
-            <input name="status" type="radio" defaultChecked />
-          ) : (
-            <input name="status" type="radio" />
-          )}
-          <label>In Stock</label>
-        </div>
-        <div>
-          {inventoryItem.quantity ? (
-            <input name="status" type="radio" />
-          ) : (
-            <input name="status" type="radio" defaultChecked />
-          )}
-          <label>Out of Stock</label>
-        </div>
-        <label>Quantity</label>
-        <input defaultValue={inventoryItem.quantity} name="quantity" />
-        <label>Warehouse</label>
-        <select name="warehouseName">
-          {currentWarehouse && (
-            <option value={currentWarehouse.name}>
-              {currentWarehouse.name}
+        <div className="inventory-item-edit__form-container">
+          <h2 className="inventory-item-edit__form-header">Item Details</h2>
+          <label className="inventory-item-edit__form-label">Item Name</label>
+          <input
+            defaultValue={inventoryItem.name}
+            name="itemName"
+            className="inventory-item-edit__form-input"
+          />
+          <label className="inventory-item-edit__form-label">Description</label>
+          <textarea
+            defaultValue={inventoryItem.description}
+            name="description"
+            className="inventory-item-edit__form-input inventory-item-edit__form-input--text-area"
+          />
+          <label className="inventory-item-edit__form-label">Category</label>
+          <select name="category" className="inventory-item-edit__form-input">
+            <option value={inventoryItem.category}>
+              {inventoryItem.category}
             </option>
-          )}
-          {filteredWarehouses.map((warehouse: WarehouseProfile) => {
-            return (
-              <option value={warehouse.name} key={warehouse.id}>
-                {warehouse.name}
+            {categories.map((category: string) => {
+              return (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="inventory-item-edit__form-container">
+          <h2 className="inventory-item-edit__form-header">
+            Item Availability
+          </h2>
+          {/* remove hover cursor */}
+          <p className="inventory-item-edit__form-label">Status</p>
+          <div className="inventory-item-edit__status-containers">
+            <div className="inventory-item-edit__status-container">
+              {inventoryItem.quantity ? (
+                <input
+                  name="status"
+                  type="radio"
+                  defaultChecked
+                  className="inventory-item-edit__radio-input"
+                />
+              ) : (
+                <input
+                  name="status"
+                  type="radio"
+                  className="inventory-item-edit__radio-input"
+                />
+              )}
+              <label className="inventory-item-edit__radio-label">
+                In Stock
+              </label>
+            </div>
+            <div className="inventory-item-edit__status-container">
+              {inventoryItem.quantity ? (
+                <input
+                  name="status"
+                  type="radio"
+                  className="inventory-item-edit__radio-input"
+                />
+              ) : (
+                <input
+                  name="status"
+                  type="radio"
+                  defaultChecked
+                  className="inventory-item-edit__radio-input"
+                />
+              )}
+              <label className="inventory-item-edit__radio-label">
+                Out of Stock
+              </label>
+            </div>
+          </div>
+          <label className="inventory-item-edit__form-label">Quantity</label>
+          <input
+            defaultValue={inventoryItem.quantity}
+            name="quantity"
+            className="inventory-item-edit__form-input"
+          />
+          <label className="inventory-item-edit__form-label">Warehouse</label>
+          <select
+            name="warehouseName"
+            className="inventory-item-edit__form-input"
+          >
+            {currentWarehouse && (
+              <option value={currentWarehouse.name}>
+                {currentWarehouse.name}
               </option>
-            );
-          })}
-        </select>
-        <Link to={`/inventory`}>Cancel</Link>
-        <button type="submit">Save</button>
+            )}
+            {filteredWarehouses.map((warehouse: WarehouseProfile) => {
+              return (
+                <option value={warehouse.name} key={warehouse.id}>
+                  {warehouse.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="inventory-item-edit__btns">
+          <Link
+            to={`/inventory`}
+            className="inventory-item-edit__btn inventory-item-edit__btn--cancel"
+          >
+            Cancel
+          </Link>
+          <button
+            type="submit"
+            className="inventory-item-edit__btn inventory-item-edit__btn--save"
+          >
+            Save
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
