@@ -9,11 +9,13 @@ import "./InventoryListItem.scss";
 interface Props {
   inventoryItem: InventoryItemInfo;
   handleDelete: Function;
+  warehouse: String;
 }
 
 export default function InventoryListItem({
   inventoryItem,
   handleDelete,
+  warehouse,
 }: Props): ReactElement {
   const handleClick = () => {
     handleDelete(inventoryItem.id);
@@ -69,9 +71,7 @@ export default function InventoryListItem({
       <div className="inventory-list-item__warehouse-container">
         <div className="inventory-list-item__info-container">
           <h2 className="inventory-list-item__header">WAREHOUSE</h2>
-          <p className="inventory-list-item__info">
-            {inventoryItem.warehouseID}
-          </p>
+          <p className="inventory-list-item__info">{warehouse}</p>
         </div>
       </div>
       <div className="inventory-list-item__btns">

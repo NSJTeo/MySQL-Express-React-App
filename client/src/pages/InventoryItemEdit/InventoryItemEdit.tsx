@@ -12,6 +12,17 @@ export default function InventoryItemEdit(): ReactElement {
   const { inventoryItemID } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/inventory/${inventoryItemID}`)
+      .then((response) => {
+        setInventoryItem(response.data);
+        axios.get(`http://localhost:8080/warehouses`).then((response) => {
+          setWarehouses(response.data);
+        });
+      });
+  }, [inventoryItemID]);
+
   const handleSubmit = (e: any): void => {
     e.preventDefault();
     if (!inventoryItemID) {
@@ -64,17 +75,6 @@ export default function InventoryItemEdit(): ReactElement {
         navigate(`/inventory/${inventoryItemID}`);
       });
   };
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/inventory/${inventoryItemID}`)
-      .then((response) => {
-        setInventoryItem(response.data);
-        axios.get(`http://localhost:8080/warehouses`).then((response) => {
-          setWarehouses(response.data);
-        });
-      });
-  }, [inventoryItemID]);
 
   if (!inventoryItem) {
     return <p>Loading</p>;
