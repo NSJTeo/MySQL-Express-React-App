@@ -7,6 +7,9 @@
   border-radius: 3px;
   position: relative;
   top: -4.25rem;
+  @include tablet {
+    top: -5.875rem;
+  }
 }
 
 @mixin page-header {
@@ -119,12 +122,26 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  @include tablet {
+    padding: 2rem;
+    padding-bottom: 1.375rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 @mixin search-bar-header {
   font-size: 1.75rem;
   line-height: 2.25rem;
   padding-bottom: 1rem;
+  font-weight: 600;
+  @include tablet {
+    padding: 0;
+    font-size: 32px;
+    line-height: 40px;
+    margin-right: auto;
+  }
 }
 
 @mixin search-bar {
@@ -135,6 +152,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  @include tablet {
+    margin-bottom: 0;
+    padding: 0.5rem 1rem;
+    min-width: 11.5625rem;
+  }
 }
 
 @mixin search-bar-input {
@@ -143,17 +165,32 @@
   &::placeholder {
     font-size: 0.8125rem;
     line-height: 1.25rem;
+    @include tablet {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+  @include tablet {
+    width: 10.5rem;
   }
 }
 
 @mixin search-bar-add-btn {
   text-align: center;
-  background-color: blue;
+  background-color: #2e66e5;
   flex-grow: 1;
   color: white;
   border-radius: 1.25rem;
   font-weight: 600;
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  @include tablet {
+    font-size: 14px;
+    line-height: 24px;
+    flex-grow: 0;
+    min-width: 10.5rem;
+    border: 1px solid #2e66e5;
+    margin-left: 1rem;
+  }
 }
