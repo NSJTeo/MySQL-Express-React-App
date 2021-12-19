@@ -1,3 +1,5 @@
+@use "../../styles/queries.scss" as *;
+
 .header {
   &__container {
     background-color: #232940;
@@ -5,14 +7,26 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem 1rem 5.5rem 1rem;
+    @include tablet {
+      flex-direction: row;
+      padding: 2rem;
+      padding-bottom: 7.875rem;
+      justify-content: space-between;
+    }
   }
   &__logo {
     margin-bottom: 1.5rem;
+    @include tablet {
+      margin: 0;
+    }
   }
   &__links {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    @include tablet {
+      width: fit-content;
+    }
   }
   &__link {
     width: 50%;
@@ -20,15 +34,26 @@
     justify-content: center;
     align-items: center;
     color: #bdc5d5;
+    @include tablet {
+      width: fit-content;
+    }
     &--selected {
       color: white;
       background-color: #13182c;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 1.25rem;
+      @include tablet {
+        margin-right: 1.5rem;
+      }
     }
   }
   &__link-text {
     font-size: 0.8125rem;
     line-height: 1.25rem;
+    font-weight: 600;
+    @include tablet {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 }

@@ -1,3 +1,5 @@
+@use "./queries.scss" as *;
+
 @mixin page-container {
   background-color: white;
   margin: 0 1rem;
