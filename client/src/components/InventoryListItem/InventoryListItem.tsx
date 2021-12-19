@@ -27,7 +27,7 @@ export default function InventoryListItem({
     <li className="inventory-list-item__container">
       <div className="inventory-list-item__item-status-container">
         <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__header">INVENTORY ITEM</h2>
+          <h2 className="inventory-list-item__info-header">INVENTORY ITEM</h2>
           <Link
             to={`/inventory/${inventoryItem.id}`}
             className="inventory-list-item__item-link"

@@ -23,7 +23,7 @@ export default function WarehouseListItem({
     <li className="warehouse-list-item__container">
       <div className="warehouse-list-item__warehouse-contact-container">
         <div className="warehouse-list-item__warehouse-container">
-          <h2 className="warehouse-list-item__warehouse-header">WAREHOUSE</h2>
+          <h2 className="warehouse-list-item__info-header">WAREHOUSE</h2>
           <Link
             to={`/warehouse/${warehouse.id}`}
             className="warehouse-list-item__warehouse-link"
