@@ -1,3 +1,5 @@
+@use "../../styles/mixins.scss" as *;
+
 .warehouse-inventory-list-item {
   &__container {
     padding: 1rem 1.6875rem 1.6875rem 1.5rem;

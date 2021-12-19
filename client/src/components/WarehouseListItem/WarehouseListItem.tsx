@@ -39,29 +39,23 @@ export default function WarehouseListItem({
           </Link>
         </div>
         <div className="warehouse-list-item__contact-container">
-          <h2 className="warehouse-list-item__contact-header">CONTACT NAME</h2>
-          <p className="warehouse-list-item__contact">
-            {warehouse.contactName}
-          </p>
+          <h2 className="warehouse-list-item__info-header">CONTACT NAME</h2>
+          <p className="warehouse-list-item__info">{warehouse.contactName}</p>
         </div>
       </div>
       <div className="warehouse-list-item__address-contact-info-container">
         <div className="warehouse-list-item__address-container">
-          <h2 className="warehouse-list-item__address-header">ADDRESS</h2>
-          <p className="warehouse-list-item__address">
+          <h2 className="warehouse-list-item__info-header">ADDRESS</h2>
+          <p className="warehouse-list-item__info warehouse-list-item__info--address">
             {warehouse.address}, {warehouse.city}, {warehouse.country}
           </p>
         </div>
         <div className="warehouse-list-item__contact-info-container">
-          <h2 className="warehouse-list-item__contact-info-header">
+          <h2 className="warehouse-list-item__info-header">
             CONTACT INFORMATION
           </h2>
-          <p className="warehouse-list-item__contact-info">
-            {warehouse.contactPhone}
-          </p>
-          <p className="warehouse-list-item__contact-info">
-            {warehouse.contactEmail}
-          </p>
+          <p className="warehouse-list-item__info">{warehouse.contactPhone}</p>
+          <p className="warehouse-list-item__info">{warehouse.contactEmail}</p>
         </div>
       </div>
       <div className="warehouse-list-item__btns-container">

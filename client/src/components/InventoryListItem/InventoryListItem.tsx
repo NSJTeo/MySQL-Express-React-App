@@ -44,14 +44,14 @@ export default function InventoryListItem({
         </div>
         {inStock ? (
           <div className="inventory-list-item__info-container">
-            <h2 className="inventory-list-item__header">STATUS</h2>
+            <h2 className="inventory-list-item__info-header">STATUS</h2>
             <p className="inventory-list-item__status inventory-list-item__status--in-stock">
               {inventoryItem.status.toUpperCase()}
             </p>
           </div>
         ) : (
           <div className="inventory-list-item__info-container">
-            <h2 className="inventory-list-item__header">STATUS</h2>
+            <h2 className="inventory-list-item__info-header">STATUS</h2>
             <p className="inventory-list-item__status inventory-list-item__status--out-of-stock">
               {inventoryItem.status.toUpperCase()}
             </p>
@@ -60,17 +60,17 @@ export default function InventoryListItem({
       </div>
       <div className="inventory-list-item__category-qty-container">
         <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__header">CATEGORY</h2>
+          <h2 className="inventory-list-item__info-header">CATEGORY</h2>
           <p className="inventory-list-item__info">{inventoryItem.category}</p>
         </div>
         <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__header">QTY</h2>
+          <h2 className="inventory-list-item__info-header">QTY</h2>
           <p className="inventory-list-item__info">{inventoryItem.quantity}</p>
         </div>
       </div>
       <div className="inventory-list-item__warehouse-container">
         <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__header">WAREHOUSE</h2>
+          <h2 className="inventory-list-item__info-header">WAREHOUSE</h2>
           <p className="inventory-list-item__info">{warehouse}</p>
         </div>
       </div>

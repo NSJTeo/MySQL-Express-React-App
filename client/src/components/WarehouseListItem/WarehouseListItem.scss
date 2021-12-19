@@ -1,7 +1,8 @@
+@use "../../styles/mixins.scss" as *;
+
 .warehouse-list-item {
   &__container {
-    padding: 1rem 1.5rem;
-    border-top: 1px solid black;
+    @include list-item-container;
   }
   &__warehouse-contact-container {
     display: flex;
@@ -14,33 +15,23 @@
   &__contact-container {
     width: 50%;
   }
-  &__warehouse-header {
-    line-height: 1rem;
-    font-weight: 600;
-    font-size: 0.6875rem;
-    margin-bottom: 0.25rem;
+  &__info-header {
+    @include list-item-info-header;
+  }
+  &__info {
+    @include list-item-info;
   }
   &__warehouse-link {
     display: flex;
     color: blue;
   }
   &__warehouse-link-text {
+    // font-size: 0.8125rem;
+    // line-height: 1.25rem;
     font-weight: 600;
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
   }
   &__warehouse-link-icon {
     width: 1.25rem;
-  }
-  &__contact-header {
-    line-height: 1rem;
-    font-weight: 600;
-    font-size: 0.6875rem;
-    margin-bottom: 0.25rem;
-  }
-  &__contact {
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
   }
   &__address-contact-info-container {
     display: flex;
@@ -53,27 +44,6 @@
   &__contact-info-container {
     width: 50%;
   }
-  &__address-header {
-    line-height: 1rem;
-    font-weight: 600;
-    font-size: 0.6875rem;
-    margin-bottom: 0.25rem;
-  }
-  &__address {
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
-    width: 8rem;
-  }
-  &__contact-info-header {
-    line-height: 1rem;
-    font-weight: 600;
-    font-size: 0.6875rem;
-    margin-bottom: 0.25rem;
-  }
-  &__contact-info {
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
-  }
   &__btns-container {
     display: flex;
     justify-content: space-between;
@@ -81,6 +51,9 @@
   &__btn {
     background: none;
     border: none;
+    &:hover {
+      cursor: pointer;
+    }
     &--delete {
       width: 0.875rem;
       height: auto;
