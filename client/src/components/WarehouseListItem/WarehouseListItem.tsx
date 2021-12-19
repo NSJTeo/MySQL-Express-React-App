@@ -21,41 +21,47 @@ export default function WarehouseListItem({
 
   return (
     <li className="warehouse-list-item__container">
-      <div className="warehouse-list-item__warehouse-contact-container">
-        <div className="warehouse-list-item__warehouse-container">
-          <h2 className="warehouse-list-item__info-header">WAREHOUSE</h2>
-          <Link
-            to={`/warehouse/${warehouse.id}`}
-            className="warehouse-list-item__warehouse-link"
-          >
-            <p className="warehouse-list-item__warehouse-link-text">
-              {warehouse.name}
+      <div className="warehouse-list-item__inner-container">
+        <div className="warehouse-list-item__warehouse-address-container">
+          <div className="warehouse-list-item__warehouse-container">
+            <h2 className="warehouse-list-item__info-header">WAREHOUSE</h2>
+            <Link
+              to={`/warehouse/${warehouse.id}`}
+              className="warehouse-list-item__warehouse-link"
+            >
+              <p className="warehouse-list-item__warehouse-link-text">
+                {warehouse.name}
+              </p>
+              <img
+                src={nextIcon}
+                alt=""
+                className="warehouse-list-item__warehouse-link-icon"
+              />
+            </Link>
+          </div>
+          <div className="warehouse-list-item__address-container">
+            <h2 className="warehouse-list-item__info-header">ADDRESS</h2>
+            <p className="warehouse-list-item__info warehouse-list-item__info--address">
+              {warehouse.address}, {warehouse.city}, {warehouse.country}
             </p>
-            <img
-              src={nextIcon}
-              alt=""
-              className="warehouse-list-item__warehouse-link-icon"
-            />
-          </Link>
-        </div>
-        <div className="warehouse-list-item__contact-container">
-          <h2 className="warehouse-list-item__info-header">CONTACT NAME</h2>
-          <p className="warehouse-list-item__info">{warehouse.contactName}</p>
-        </div>
-      </div>
-      <div className="warehouse-list-item__address-contact-info-container">
-        <div className="warehouse-list-item__address-container">
-          <h2 className="warehouse-list-item__info-header">ADDRESS</h2>
-          <p className="warehouse-list-item__info warehouse-list-item__info--address">
-            {warehouse.address}, {warehouse.city}, {warehouse.country}
-          </p>
+          </div>
         </div>
         <div className="warehouse-list-item__contact-info-container">
-          <h2 className="warehouse-list-item__info-header">
-            CONTACT INFORMATION
-          </h2>
-          <p className="warehouse-list-item__info">{warehouse.contactPhone}</p>
-          <p className="warehouse-list-item__info">{warehouse.contactEmail}</p>
+          <div className="warehouse-list-item__contact-container">
+            <h2 className="warehouse-list-item__info-header">CONTACT NAME</h2>
+            <p className="warehouse-list-item__info">{warehouse.contactName}</p>
+          </div>
+          <div className="warehouse-list-item__contact-info-container">
+            <h2 className="warehouse-list-item__info-header">
+              CONTACT INFORMATION
+            </h2>
+            <p className="warehouse-list-item__info">
+              {warehouse.contactPhone}
+            </p>
+            <p className="warehouse-list-item__info">
+              {warehouse.contactEmail}
+            </p>
+          </div>
         </div>
       </div>
       <div className="warehouse-list-item__btns-container">

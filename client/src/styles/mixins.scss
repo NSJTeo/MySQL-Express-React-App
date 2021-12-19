@@ -99,7 +99,7 @@
 
 @mixin list-item-container {
   padding: 1rem 1.5rem;
-  border-top: 1px solid black;
+  border-top: 1px solid #bdc5d5;
 }
 
 @mixin list-item-info-header {
@@ -107,13 +107,16 @@
   font-weight: 600;
   font-size: 0.6875rem;
   margin-bottom: 0.25rem;
+  width: max-content;
 }
 
 @mixin list-item-info {
   font-size: 0.8125rem;
   line-height: 1.25rem;
+  width: max-content;
   &--address {
     width: 8rem;
+    margin-bottom: 1.1875rem;
   }
 }
 
