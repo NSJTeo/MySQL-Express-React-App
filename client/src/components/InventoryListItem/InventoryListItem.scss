@@ -2,8 +2,6 @@
 
 .inventory-list-item {
   &__container {
-    // padding: 1rem 1.5rem;
-    // border-top: 1px solid black;
     @include list-item-container;
   }
   &__item-status-container {
@@ -34,8 +32,8 @@
   }
   &__item-link-text {
     font-weight: 600;
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
     margin-right: 0.25rem;
   }
   &__item-link-icon {
