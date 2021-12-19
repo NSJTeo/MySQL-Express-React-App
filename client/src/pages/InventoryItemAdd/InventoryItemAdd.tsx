@@ -148,7 +148,7 @@ export default function InventoryItemAdd(): ReactElement {
           >
             Cancel
           </Link>
-          <button className="inventory-item-add__btn inventory-item-add__btn--add">
+          <button className="inventory-item-add__btn inventory-item-add__btn--save">
             + Add Item
           </button>
         </div>
