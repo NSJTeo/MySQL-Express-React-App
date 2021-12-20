@@ -57,6 +57,7 @@ export default function Warehouse(): ReactElement {
           className="warehouse__edit-link"
         >
           <img src={editIcon} alt="" className="warehouse__edit-icon" />
+          <p className="warehouse__edit-text">Edit</p>
         </Link>
       </div>
       <div className="warehouse__info-container">
