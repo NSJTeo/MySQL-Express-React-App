@@ -1,22 +1,29 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
 
 .warehouse-list-item {
   &__container {
     @include list-item-container;
   }
-  &__inner-container {
-    display: flex;
-  }
   &__warehouse-address-container {
     display: flex;
     flex-direction: column;
     width: 50%;
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      width: 45%;
+    }
   }
   &__warehouse-container {
     width: 50%;
   }
   &__contact-container {
     margin-bottom: 1rem;
+    @include tablet {
+      margin: 0;
+      width: 50%;
+    }
   }
   &__info-header {
     @include list-item-info-header;
@@ -29,15 +36,31 @@
     color: blue;
     width: max-content;
     margin-bottom: 1rem;
+    @include tablet {
+      margin: 0;
+    }
   }
   &__warehouse-link-text {
     font-weight: 600;
     font-size: 13px;
     line-height: 20px;
     margin-right: 0.25rem;
+    @include tablet {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
   &__warehouse-link-icon {
     width: 1.25rem;
+  }
+  &__name-contact-info-container {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 45%;
+    }
   }
   &__contact-info-container {
     display: flex;
@@ -47,12 +70,13 @@
   &__address-container {
     width: 50%;
   }
-  &__contact-info-container {
-    width: 50%;
-  }
   &__btns-container {
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      align-items: center;
+      margin-left: auto;
+    }
   }
   &__btn {
     background: none;
@@ -63,6 +87,9 @@
     &--delete {
       width: 0.875rem;
       height: auto;
+      @include tablet {
+        margin-right: 1.5rem;
+      }
     }
     &--edit {
       width: 1.125rem;

@@ -1,7 +1,46 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
 
 .warehouse-list {
   &__container {
     @include page-container;
+  }
+  &__headers {
+    display: none;
+    @include tablet {
+      display: flex;
+      padding: 11px 2rem;
+    }
+  }
+  &__warehouse-address-header-container {
+    display: flex;
+    width: 45%;
+  }
+  &__contact-header-container {
+    display: flex;
+    width: 45%;
+  }
+  &__header-container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    &--actions {
+      margin-left: auto;
+      width: auto;
+    }
+  }
+  &__header {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5c667e;
+    margin-right: 0.25rem;
+    &--actions {
+      margin: 0;
+    }
+  }
+  &__sort-icon {
+    width: 1rem;
+    height: auto;
   }
 }
