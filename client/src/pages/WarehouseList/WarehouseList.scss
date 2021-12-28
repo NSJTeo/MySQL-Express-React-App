@@ -14,18 +14,23 @@
   }
   &__warehouse-address-header-container {
     display: flex;
-    width: 40.3%;
+    width: 42.34%;
   }
   &__contact-header-container {
     display: flex;
-    width: 45.9%;
+    width: 50.47%;
   }
   &__header-container {
     display: flex;
     align-items: center;
-    width: 50%;
+    &--warehouse {
+      width: 55.35%;
+    }
+    &--contact-name {
+      width: 37.46%;
+    }
     &--actions {
-      width: 13.8%;
+      flex-grow: 1;
     }
   }
   &__header {

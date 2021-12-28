@@ -38,7 +38,7 @@ export default function WarehouseList(): ReactElement {
           </div>
         </div>
         <div className="warehouse-list__contact-header-container">
-          <div className="warehouse-list__header-container">
+          <div className="warehouse-list__header-container warehouse-list__header-container--contact-name">
             <h2 className="warehouse-list__header">CONTACT NAME</h2>
             <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
           </div>
