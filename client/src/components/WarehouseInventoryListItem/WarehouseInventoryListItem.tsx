@@ -25,7 +25,7 @@ export default function WarehouseInventoryListItem({
     <li className="warehouse-inventory-list-item__container">
       <div className="warehouse-inventory-list-item__inner-container">
         <div className="warehouse-inventory-list-item__name-category-container">
-          <div className="warehouse-inventory-list-item__info-container">
+          <div className="warehouse-inventory-list-item__info-container warehouse-inventory-list-item__info-container--item">
             <h2 className="warehouse-inventory-list-item__header">
               INVENTORY ITEM
             </h2>
@@ -49,27 +49,9 @@ export default function WarehouseInventoryListItem({
               {inventoryItem.category}
             </p>
           </div>
-          {/* <div className="warehouse-inventory-list-item__info-container">
-          <h2 className="warehouse-inventory-list-item__header">STATUS</h2>
-          <p
-            className={`warehouse-inventory-list-item__status ${
-              inStock
-                ? "warehouse-inventory-list-item__status--in-stock"
-                : "warehouse-inventory-list-item__status--out-of-stock"
-            }`}
-          >
-            {inventoryItem.status.toUpperCase()}
-          </p>
-        </div> */}
         </div>
         <div className="warehouse-inventory-list-item__status-quantity-container">
-          {/* <div className="warehouse-inventory-list-item__info-container">
-          <h2 className="warehouse-inventory-list-item__header">CATEGORY</h2>
-          <p className="warehouse-inventory-list-item__info">
-            {inventoryItem.category}
-          </p>
-        </div> */}
-          <div className="warehouse-inventory-list-item__info-container">
+          <div className="warehouse-inventory-list-item__info-container warehouse-inventory-list-item__info-container--status">
             <h2 className="warehouse-inventory-list-item__header">STATUS</h2>
             <p
               className={`warehouse-inventory-list-item__status ${

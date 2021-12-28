@@ -22,7 +22,7 @@
     flex-direction: column;
     @include tablet {
       flex-direction: row;
-      width: 46.75%;
+      width: 49.54%;
     }
   }
   &__status-quantity-container {
@@ -30,7 +30,7 @@
     flex-direction: column;
     @include tablet {
       flex-direction: row;
-      width: 53.25%;
+      flex-grow: 1;
     }
   }
   &__header {
@@ -47,6 +47,13 @@
     margin-bottom: 1.25rem;
     @include tablet {
       margin: 0;
+      width: auto;
+      &--item {
+        width: 55.35%;
+      }
+      &--status {
+        width: 65.94%;
+      }
     }
   }
   &__name-container {
@@ -74,7 +81,7 @@
     @include tablet {
       margin-left: auto;
       justify-content: end;
-      width: 13.8%;
+      width: 14.53%;
     }
   }
   &__btn {

@@ -17,7 +17,7 @@ export default function WarehouseInventoryList({
     <>
       <div className="warehouse-inventory-list__headers">
         <div className="warehouse-inventory-list__item-category-container">
-          <div className="warehouse-inventory-list__header-container">
+          <div className="warehouse-inventory-list__header-container warehouse-inventory-list__header-container--item">
             <h2 className="warehouse-inventory-list__header">INVENTORY ITEM</h2>
             <img
               src={sortIcon}
@@ -35,7 +35,7 @@ export default function WarehouseInventoryList({
           </div>
         </div>
         <div className="warehouse-inventory-list__status-quantity-container">
-          <div className="warehouse-inventory-list__header-container">
+          <div className="warehouse-inventory-list__header-container warehouse-inventory-list__header-container--status">
             <h2 className="warehouse-inventory-list__header">STATUS</h2>
             <img
               src={sortIcon}

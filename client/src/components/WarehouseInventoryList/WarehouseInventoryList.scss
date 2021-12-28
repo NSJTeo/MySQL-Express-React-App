@@ -11,14 +11,20 @@
   }
   &__item-category-container {
     display: flex;
-    width: 40.3%;
+    width: 42.3%;
   }
   &__header-container {
     display: flex;
     align-items: center;
-    width: 50%;
+    // width: 50%;
+    &--item {
+      width: 55.35%;
+    }
+    &--status {
+      width: 65.94%;
+    }
     &--actions {
-      width: 13.8%;
+      width: 14.53%;
     }
   }
   &__header {
@@ -38,6 +44,6 @@
   }
   &__status-quantity-container {
     display: flex;
-    width: 45.9%;
+    width: 43.125%;
   }
 }
