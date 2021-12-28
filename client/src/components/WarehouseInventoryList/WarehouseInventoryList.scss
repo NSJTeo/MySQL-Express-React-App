@@ -1,0 +1,43 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
+
+.warehouse-inventory-list {
+  &__headers {
+    display: none;
+    @include tablet {
+      display: flex;
+      padding: 11px 2rem;
+    }
+  }
+  &__item-category-container {
+    display: flex;
+    width: 40.3%;
+  }
+  &__header-container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    &--actions {
+      width: 13.8%;
+    }
+  }
+  &__header {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5c667e;
+    margin-right: 0.25rem;
+    &--actions {
+      margin: 0;
+      margin-left: auto;
+    }
+  }
+  &__sort-icon {
+    width: 1rem;
+    height: auto;
+  }
+  &__status-quantity-container {
+    display: flex;
+    width: 45.9%;
+  }
+}
