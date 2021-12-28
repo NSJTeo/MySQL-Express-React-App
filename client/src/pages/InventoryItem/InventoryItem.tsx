@@ -50,39 +50,44 @@ export default function InventoryItem(): ReactElement {
           className="inventory-item__edit-link"
         >
           <img src={editIcon} alt="" className="inventory-item__edit-icon" />
+          <p className="inventory-item__edit-text">Edit</p>
         </Link>
       </div>
-      <div className="inventory-item__info-container">
-        <h2 className="inventory-item__info-header">ITEM DESCRIPTION:</h2>
-        <p className="inventory-item__info inventory-item__info--description">
-          {inventoryItem.description}
-        </p>
-        <h2 className="inventory-item__info-header">CATEGORY:</h2>
-        <p className="inventory-item__info inventory-item__info--category">
-          {inventoryItem.category}
-        </p>
-        <div className="inventory-item__status-qty-container">
-          <div className="inventory-item__status-container">
-            <h2 className="inventory-item__info-header inventory-item__info-header--status">
-              STATUS:
-            </h2>
-            {inStock ? (
-              <p className="inventory-item__status inventory-item__status--in-stock">
-                {inventoryItem.status.toUpperCase()}
-              </p>
-            ) : (
-              <p className="inventory-item__status inventory-item__status--out-of-stock">
-                {inventoryItem.status.toUpperCase()}
-              </p>
-            )}
-          </div>
-          <div className="inventory-item__qty-container">
-            <h2 className="inventory-item__info-header">QUANTITY:</h2>
-            <p className="inventory-item__info">{inventoryItem.quantity}</p>
-          </div>
+      <div className="inventory-item__info-containers">
+        <div className="inventory-item__info-container inventory-item__info-container--left">
+          <h2 className="inventory-item__info-header">ITEM DESCRIPTION:</h2>
+          <p className="inventory-item__info inventory-item__info--description">
+            {inventoryItem.description}
+          </p>
+          <h2 className="inventory-item__info-header">CATEGORY:</h2>
+          <p className="inventory-item__info inventory-item__info--category">
+            {inventoryItem.category}
+          </p>
         </div>
-        <h2 className="inventory-item__info-header">WAREHOUSE:</h2>
-        <p className="inventory-item__info">{itemWarehouse.name}</p>
+        <div className="inventory-item__info-container">
+          <div className="inventory-item__status-qty-container">
+            <div className="inventory-item__status-container">
+              <h2 className="inventory-item__info-header inventory-item__info-header--status">
+                STATUS:
+              </h2>
+              {inStock ? (
+                <p className="inventory-item__status inventory-item__status--in-stock">
+                  {inventoryItem.status.toUpperCase()}
+                </p>
+              ) : (
+                <p className="inventory-item__status inventory-item__status--out-of-stock">
+                  {inventoryItem.status.toUpperCase()}
+                </p>
+              )}
+            </div>
+            <div className="inventory-item__qty-container">
+              <h2 className="inventory-item__info-header">QUANTITY:</h2>
+              <p className="inventory-item__info">{inventoryItem.quantity}</p>
+            </div>
+          </div>
+          <h2 className="inventory-item__info-header">WAREHOUSE:</h2>
+          <p className="inventory-item__info">{itemWarehouse.name}</p>
+        </div>
       </div>
     </div>
   );
