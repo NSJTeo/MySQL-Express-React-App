@@ -15,6 +15,25 @@
   &__header-container {
     display: flex;
     align-items: center;
+    &--item {
+      width: 23.44%;
+    }
+    &--category {
+      width: 18.91%;
+    }
+    &--status {
+      width: 19.1%;
+    }
+    &--qty {
+      width: 9.53%;
+    }
+    &--warehouse {
+      width: 14.53%;
+    }
+    &--actions {
+      width: 14.53%;
+      justify-content: end;
+    }
   }
   &__header {
     font-weight: 600;
@@ -26,5 +45,9 @@
       margin: 0;
       margin-left: auto;
     }
+  }
+  &__sort-icon {
+    width: 1rem;
+    height: auto;
   }
 }
