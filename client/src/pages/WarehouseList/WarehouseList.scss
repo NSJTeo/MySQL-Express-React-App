@@ -14,19 +14,18 @@
   }
   &__warehouse-address-header-container {
     display: flex;
-    width: 45%;
+    width: 40.3%;
   }
   &__contact-header-container {
     display: flex;
-    width: 45%;
+    width: 45.9%;
   }
   &__header-container {
     display: flex;
     align-items: center;
     width: 50%;
     &--actions {
-      margin-left: auto;
-      width: auto;
+      width: 13.8%;
     }
   }
   &__header {
@@ -37,6 +36,7 @@
     margin-right: 0.25rem;
     &--actions {
       margin: 0;
+      margin-left: auto;
     }
   }
   &__sort-icon {

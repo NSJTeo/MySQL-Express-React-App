@@ -1,25 +1,53 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
 
 .warehouse-inventory-list-item {
   &__container {
     padding: 1rem 1.6875rem 1.6875rem 1.5rem;
     border-top: 1px solid black;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 2rem;
+    }
   }
-  &__name-status-container {
+  &__inner-container {
     display: flex;
+    @include tablet {
+      width: 86.2%;
+    }
   }
-  &__category-quantity-container {
+  &__name-category-container {
     display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      width: 46.75%;
+    }
+  }
+  &__status-quantity-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      width: 53.25%;
+    }
   }
   &__header {
     font-weight: 600;
     font-size: 0.6875rem;
     line-height: 1rem;
     margin-bottom: 0.25rem;
+    @include tablet {
+      display: none;
+    }
   }
   &__info-container {
     width: 50%;
     margin-bottom: 1.25rem;
+    @include tablet {
+      margin: 0;
+    }
   }
   &__name-container {
     display: flex;
@@ -32,6 +60,9 @@
   &__name-link {
     font-weight: 600;
     margin-right: 0.6975rem;
+    @include tablet {
+      margin-right: 0.25rem;
+    }
   }
   &__link-icon {
     width: 1.25rem;
@@ -40,12 +71,20 @@
   &__btns {
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      margin-left: auto;
+      justify-content: end;
+      width: 13.8%;
+    }
   }
   &__btn {
     background: none;
     border: none;
     &:hover {
       cursor: pointer;
+    }
+    &--edit {
+      margin-left: 1.5rem;
     }
   }
   &__status {

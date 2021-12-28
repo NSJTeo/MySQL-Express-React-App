@@ -23,26 +23,33 @@ export default function WarehouseInventoryListItem({
 
   return (
     <li className="warehouse-inventory-list-item__container">
-      <div className="warehouse-inventory-list-item__name-status-container">
-        <div className="warehouse-inventory-list-item__info-container">
-          <h2 className="warehouse-inventory-list-item__header">
-            INVENTORY ITEM
-          </h2>
-          <Link
-            to={`/inventory/${inventoryItem.id}`}
-            className="warehouse-inventory-list-item__name-container"
-          >
-            <p className="warehouse-inventory-list-item__info warehouse-inventory-list-item__name-link">
-              {inventoryItem.name}
+      <div className="warehouse-inventory-list-item__inner-container">
+        <div className="warehouse-inventory-list-item__name-category-container">
+          <div className="warehouse-inventory-list-item__info-container">
+            <h2 className="warehouse-inventory-list-item__header">
+              INVENTORY ITEM
+            </h2>
+            <Link
+              to={`/inventory/${inventoryItem.id}`}
+              className="warehouse-inventory-list-item__name-container"
+            >
+              <p className="warehouse-inventory-list-item__info warehouse-inventory-list-item__name-link">
+                {inventoryItem.name}
+              </p>
+              <img
+                src={nextItem}
+                alt=""
+                className="warehouse-inventory-list-item__info warehouse-inventory-list-item__link-icon"
+              />
+            </Link>
+          </div>
+          <div className="warehouse-inventory-list-item__info-container">
+            <h2 className="warehouse-inventory-list-item__header">CATEGORY</h2>
+            <p className="warehouse-inventory-list-item__info">
+              {inventoryItem.category}
             </p>
-            <img
-              src={nextItem}
-              alt=""
-              className="warehouse-inventory-list-item__info warehouse-inventory-list-item__link-icon"
-            />
-          </Link>
-        </div>
-        <div className="warehouse-inventory-list-item__info-container">
+          </div>
+          {/* <div className="warehouse-inventory-list-item__info-container">
           <h2 className="warehouse-inventory-list-item__header">STATUS</h2>
           <p
             className={`warehouse-inventory-list-item__status ${
@@ -53,20 +60,33 @@ export default function WarehouseInventoryListItem({
           >
             {inventoryItem.status.toUpperCase()}
           </p>
+        </div> */}
         </div>
-      </div>
-      <div className="warehouse-inventory-list-item__category-quantity-container">
-        <div className="warehouse-inventory-list-item__info-container">
+        <div className="warehouse-inventory-list-item__status-quantity-container">
+          {/* <div className="warehouse-inventory-list-item__info-container">
           <h2 className="warehouse-inventory-list-item__header">CATEGORY</h2>
           <p className="warehouse-inventory-list-item__info">
             {inventoryItem.category}
           </p>
-        </div>
-        <div className="warehouse-inventory-list-item__info-container">
-          <h2 className="warehouse-inventory-list-item__header">QTY</h2>
-          <p className="warehouse-inventory-list-item__info">
-            {inventoryItem.quantity}
-          </p>
+        </div> */}
+          <div className="warehouse-inventory-list-item__info-container">
+            <h2 className="warehouse-inventory-list-item__header">STATUS</h2>
+            <p
+              className={`warehouse-inventory-list-item__status ${
+                inStock
+                  ? "warehouse-inventory-list-item__status--in-stock"
+                  : "warehouse-inventory-list-item__status--out-of-stock"
+              }`}
+            >
+              {inventoryItem.status.toUpperCase()}
+            </p>
+          </div>
+          <div className="warehouse-inventory-list-item__info-container">
+            <h2 className="warehouse-inventory-list-item__header">QTY</h2>
+            <p className="warehouse-inventory-list-item__info">
+              {inventoryItem.quantity}
+            </p>
+          </div>
         </div>
       </div>
       <div className="warehouse-inventory-list-item__btns">
@@ -78,7 +98,7 @@ export default function WarehouseInventoryListItem({
         </button>
         <Link
           to={`/inventory/${inventoryItem.id}/edit`}
-          className="warehouse-inventory-list-item__btn"
+          className="warehouse-inventory-list-item__btn warehouse-inventory-list-item__btn--edit"
         >
           <img src={editIcon} alt="" />
         </Link>

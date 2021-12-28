@@ -6,6 +6,7 @@ import axios from "axios";
 import "./Warehouse.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import editIcon from "../../assets/icons/edit-white-24px.svg";
+import sortIcon from "../../assets/icons/sort-24px.svg";
 
 export default function Warehouse(): ReactElement {
   const [warehouse, setWarehouse] = useState<WarehouseProfile>();
@@ -80,6 +81,33 @@ export default function Warehouse(): ReactElement {
             <p className="warehouse__contact-info">{warehouse.contactPhone}</p>
             <p className="warehouse__contact-info">{warehouse.contactEmail}</p>
           </div>
+        </div>
+      </div>
+      <div className="warehouse-list__headers">
+        <div className="warehouse-list__warehouse-address-header-container">
+          <div className="warehouse-list__header-container warehouse-list__header-container--warehouse">
+            <h2 className="warehouse-list__header">INVENTORY ITEM</h2>
+            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+          </div>
+          <div className="warehouse-list__header-container warehouse-list__header-container--address">
+            <h2 className="warehouse-list__header">CATEGORY</h2>
+            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+          </div>
+        </div>
+        <div className="warehouse-list__contact-header-container">
+          <div className="warehouse-list__header-container">
+            <h2 className="warehouse-list__header">STATUS</h2>
+            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+          </div>
+          <div className="warehouse-list__header-container">
+            <h2 className="warehouse-list__header">QUANTITY</h2>
+            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+          </div>
+        </div>
+        <div className="warehouse-list__header-container warehouse-list__header-container--actions">
+          <h2 className="warehouse-list__header warehouse-list__header--actions">
+            ACTIONS
+          </h2>
         </div>
       </div>
       <WarehouseInventoryList
