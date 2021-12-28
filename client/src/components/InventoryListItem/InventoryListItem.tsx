@@ -25,24 +25,25 @@ export default function InventoryListItem({
 
   return (
     <li className="inventory-list-item__container">
-      <div className="inventory-list-item__item-status-container">
-        <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__info-header">INVENTORY ITEM</h2>
-          <Link
-            to={`/inventory/${inventoryItem.id}`}
-            className="inventory-list-item__item-link"
-          >
-            <p className="inventory-list-item__item-link-text">
-              {inventoryItem.name}
-            </p>
-            <img
-              src={nextIcon}
-              alt=""
-              className="inventory-list-item__item-link-icon"
-            />
-          </Link>
-        </div>
-        {inStock ? (
+      <div className="inventory-list-item__inner-container">
+        <div className="inventory-list-item__item-status-container">
+          <div className="inventory-list-item__info-container inventory-list-item__info-container--item">
+            <h2 className="inventory-list-item__info-header">INVENTORY ITEM</h2>
+            <Link
+              to={`/inventory/${inventoryItem.id}`}
+              className="inventory-list-item__item-link"
+            >
+              <p className="inventory-list-item__item-link-text">
+                {inventoryItem.name}
+              </p>
+              <img
+                src={nextIcon}
+                alt=""
+                className="inventory-list-item__item-link-icon"
+              />
+            </Link>
+          </div>
+          {/* {inStock ? (
           <div className="inventory-list-item__info-container">
             <h2 className="inventory-list-item__info-header">STATUS</h2>
             <p className="inventory-list-item__status inventory-list-item__status--in-stock">
@@ -56,16 +57,36 @@ export default function InventoryListItem({
               {inventoryItem.status.toUpperCase()}
             </p>
           </div>
-        )}
-      </div>
-      <div className="inventory-list-item__category-qty-container">
-        <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__info-header">CATEGORY</h2>
-          <p className="inventory-list-item__info">{inventoryItem.category}</p>
+        )} */}
+          <div className="inventory-list-item__info-container">
+            <h2 className="inventory-list-item__info-header">CATEGORY</h2>
+            <p className="inventory-list-item__info">
+              {inventoryItem.category}
+            </p>
+          </div>
         </div>
-        <div className="inventory-list-item__info-container">
-          <h2 className="inventory-list-item__info-header">QTY</h2>
-          <p className="inventory-list-item__info">{inventoryItem.quantity}</p>
+        <div className="inventory-list-item__category-qty-container">
+          {inStock ? (
+            <div className="inventory-list-item__info-container inventory-list-item__info-container--status">
+              <h2 className="inventory-list-item__info-header">STATUS</h2>
+              <p className="inventory-list-item__status inventory-list-item__status--in-stock">
+                {inventoryItem.status.toUpperCase()}
+              </p>
+            </div>
+          ) : (
+            <div className="inventory-list-item__info-container inventory-list-item__info-container--status">
+              <h2 className="inventory-list-item__info-header">STATUS</h2>
+              <p className="inventory-list-item__status inventory-list-item__status--out-of-stock">
+                {inventoryItem.status.toUpperCase()}
+              </p>
+            </div>
+          )}
+          <div className="inventory-list-item__info-container">
+            <h2 className="inventory-list-item__info-header">QTY</h2>
+            <p className="inventory-list-item__info">
+              {inventoryItem.quantity}
+            </p>
+          </div>
         </div>
       </div>
       <div className="inventory-list-item__warehouse-container">
@@ -80,7 +101,7 @@ export default function InventoryListItem({
         </button>
         <Link
           to={`/inventory/${inventoryItem.id}/edit`}
-          className="inventory-list-item__btn"
+          className="inventory-list-item__btn inventory-list-item__btn--edit"
         >
           <img src={editIcon} alt="" />
         </Link>

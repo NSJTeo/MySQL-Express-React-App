@@ -140,7 +140,8 @@
   border-top: 1px solid #bdc5d5;
   @include tablet {
     display: flex;
-    padding: 1rem 2rem;
+    padding: 1.125rem 2rem;
+    align-items: center;
   }
 }
 
@@ -159,6 +160,10 @@
   font-size: 0.8125rem;
   line-height: 1.25rem;
   width: max-content;
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
   &--address {
     width: 8rem;
     margin-bottom: 1.1875rem;
