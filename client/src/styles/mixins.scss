@@ -51,6 +51,10 @@
   line-height: 1.75rem;
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
 @mixin form-label {
@@ -58,6 +62,10 @@
   font-size: 0.8125rem;
   line-height: 1.25rem;
   margin-bottom: 0.25rem;
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
 }
 
 @mixin form-input {
@@ -70,6 +78,10 @@
   &--text-area {
     resize: none;
     min-height: 7.5rem;
+  }
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
   }
 }
 
