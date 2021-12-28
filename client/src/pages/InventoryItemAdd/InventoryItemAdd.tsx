@@ -75,71 +75,77 @@ export default function InventoryItemAdd(): ReactElement {
         <h1 className="inventory-item-add__title">Add New Inventory Item</h1>
       </div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="inventory-item-add__form-container">
-          <h2 className="inventory-item-add__form-header">Item Details</h2>
-          <label className="inventory-item-add__form-label">Item Name</label>
-          <input
-            name="name"
-            placeholder="Item Name"
-            className="inventory-item-edit__form-input"
-          />
-          <label className="inventory-item-add__form-label">Description</label>
-          <textarea
-            name="description"
-            placeholder="Please enter a description..."
-            className="inventory-item-edit__form-input inventory-item-edit__form-input--text-area"
-          />
-          <label className="inventory-item-add__form-label">Category</label>
-          <select name="category" className="inventory-item-edit__form-input">
-            <option value="">Please Select</option>
-            {categories.map((category: string) => {
-              return <option value={category}>{category}</option>;
-            })}
-          </select>
-        </div>
-        <div className="inventory-item-add__form-container">
-          <h2 className="inventory-item-add__form-header">Item Availability</h2>
-          <p className="inventory-item-add__form-label"></p>
-          <div className="inventory-item-add__status-containers">
-            <div className="inventory-item-add__status-container">
-              <input
-                name="status"
-                type="radio"
-                value="In Stock"
-                className="inventory-item-add__radio-input"
-              />
-              <label className="inventory-item-add__radio-label">
-                In Stock
-              </label>
-            </div>
-            <div className="inventory-item-add__status-container">
-              <input
-                name="status"
-                type="radio"
-                value="Out of Stock"
-                className="inventory-item-add__radio-input"
-              />
-              <label className="inventory-item-add__radio-label">
-                Out of Stock
-              </label>
-            </div>
+        <div className="inventory-item-add__form-containers">
+          <div className="inventory-item-add__form-container inventory-item-add__form-container--left">
+            <h2 className="inventory-item-add__form-header">Item Details</h2>
+            <label className="inventory-item-add__form-label">Item Name</label>
+            <input
+              name="name"
+              placeholder="Item Name"
+              className="inventory-item-edit__form-input"
+            />
+            <label className="inventory-item-add__form-label">
+              Description
+            </label>
+            <textarea
+              name="description"
+              placeholder="Please enter a description..."
+              className="inventory-item-edit__form-input inventory-item-edit__form-input--text-area"
+            />
+            <label className="inventory-item-add__form-label">Category</label>
+            <select name="category" className="inventory-item-edit__form-input">
+              <option value="">Please Select</option>
+              {categories.map((category: string) => {
+                return <option value={category}>{category}</option>;
+              })}
+            </select>
           </div>
-          <label className="inventory-item-add__form-label">Quantity</label>
-          <input
-            name="quantity"
-            className="inventory-item-edit__form-input"
-            defaultValue={0}
-          />
-          <label className="inventory-item-add__form-label">Warehouse</label>
-          <select
-            name="warehouseName"
-            className="inventory-item-edit__form-input"
-          >
-            <option value="">Please Select</option>
-            {warehouses.map((warehouse: WarehouseProfile) => {
-              return <option value={warehouse.name}>{warehouse.name}</option>;
-            })}
-          </select>
+          <div className="inventory-item-add__form-container">
+            <h2 className="inventory-item-add__form-header">
+              Item Availability
+            </h2>
+            <p className="inventory-item-add__form-label"></p>
+            <div className="inventory-item-add__status-containers">
+              <div className="inventory-item-add__status-container">
+                <input
+                  name="status"
+                  type="radio"
+                  value="In Stock"
+                  className="inventory-item-add__radio-input"
+                />
+                <label className="inventory-item-add__radio-label">
+                  In Stock
+                </label>
+              </div>
+              <div className="inventory-item-add__status-container">
+                <input
+                  name="status"
+                  type="radio"
+                  value="Out of Stock"
+                  className="inventory-item-add__radio-input"
+                />
+                <label className="inventory-item-add__radio-label">
+                  Out of Stock
+                </label>
+              </div>
+            </div>
+            <label className="inventory-item-add__form-label">Quantity</label>
+            <input
+              name="quantity"
+              className="inventory-item-edit__form-input"
+              defaultValue={0}
+            />
+            <label className="inventory-item-add__form-label">Warehouse</label>
+            <select
+              name="warehouseName"
+              className="inventory-item-edit__form-input"
+            >
+              <option value="">Please Select</option>
+              {warehouses.map((warehouse: WarehouseProfile) => {
+                return <option value={warehouse.name}>{warehouse.name}</option>;
+              })}
+            </select>
+          </div>
         </div>
         <div className="inventory-item-add__btns">
           <Link
