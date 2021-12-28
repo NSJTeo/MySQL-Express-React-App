@@ -4,6 +4,7 @@ import InventoryListSearchBar from "../../components/InventoryListSearchBar/Inve
 import InventoryListItem from "../../components/InventoryListItem/InventoryListItem";
 import axios from "axios";
 import "./InventoryList.scss";
+import sortIcon from "../../assets/icons/sort-24px.svg";
 
 export default function InventoryList(): ReactElement {
   const [inventoryItems, setInventoryItems] = useState<InventoryItemInfo[]>([]);
@@ -40,20 +41,43 @@ export default function InventoryList(): ReactElement {
   return (
     <div className="inventory-list__container">
       <InventoryListSearchBar />
-      <div>
-        <ul>
-          {inventoryItems.map((inventoryItem: InventoryItemInfo) => {
-            return (
-              <InventoryListItem
-                key={inventoryItem.id}
-                inventoryItem={inventoryItem}
-                handleDelete={handleDelete}
-                warehouse={getWarehouse(inventoryItem.warehouseID || "")}
-              />
-            );
-          })}
-        </ul>
+      <div className="inventory-list__headers">
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">INVENTORY ITEM</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">CATEGORY</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">STATUS</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">QTY</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">WAREHOUSE</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container">
+          <h2 className="inventory-list__header">ACTIONS</h2>
+        </div>
       </div>
+      <ul>
+        {inventoryItems.map((inventoryItem: InventoryItemInfo) => {
+          return (
+            <InventoryListItem
+              key={inventoryItem.id}
+              inventoryItem={inventoryItem}
+              handleDelete={handleDelete}
+              warehouse={getWarehouse(inventoryItem.warehouseID || "")}
+            />
+          );
+        })}
+      </ul>
     </div>
   );
 }

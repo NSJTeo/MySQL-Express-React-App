@@ -1,13 +1,30 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
 
 .inventory-list {
   &__container {
-    // background-color: white;
-    // margin: 0 1rem;
-    // box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    // border-radius: 3px;
-    // position: relative;
-    // top: -4.25rem;
     @include page-container;
+  }
+  &__headers {
+    display: none;
+    @include tablet {
+      display: flex;
+      padding: 11px 2rem;
+    }
+  }
+  &__header-container {
+    display: flex;
+    align-items: center;
+  }
+  &__header {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5c667e;
+    margin-right: 0.25rem;
+    &--actions {
+      margin: 0;
+      margin-left: auto;
+    }
   }
 }
