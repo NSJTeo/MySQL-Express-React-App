@@ -12,17 +12,20 @@
     @include tablet {
       flex-direction: row;
       align-items: center;
-      width: 45%;
+      width: 42.34%;
     }
   }
   &__warehouse-container {
     width: 50%;
+    @include tablet {
+      width: 55.35%;
+    }
   }
   &__contact-container {
     margin-bottom: 1rem;
     @include tablet {
       margin: 0;
-      width: 50%;
+      width: 37.46%;
     }
   }
   &__info-header {
@@ -59,16 +62,22 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      width: 45%;
+      width: 50.47%;
     }
   }
   &__contact-info-container {
     display: flex;
     flex-direction: column;
     width: 50%;
+    @include tablet {
+      width: auto;
+    }
   }
   &__address-container {
     width: 50%;
+    @include tablet {
+      width: auto;
+    }
   }
   &__btns-container {
     display: flex;
