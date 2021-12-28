@@ -1,4 +1,5 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/queries.scss" as *;
 
 .warehouse-edit {
   &__container {
@@ -27,5 +28,12 @@
   }
   &__btn {
     @include form-btn;
+  }
+  &__form-containers {
+    @include tablet {
+      display: flex;
+      padding: 1.5rem 0 2rem 0;
+      border-top: 1px solid black;
+    }
   }
 }

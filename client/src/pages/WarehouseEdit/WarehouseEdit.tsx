@@ -56,59 +56,61 @@ export default function WarehouseEdit(): ReactElement {
         <h1 className="warehouse-edit__title">Edit Warehouse</h1>
       </div>
       <form ref={formRef}>
-        <div className="warehouse-edit__form-container">
-          <h2 className="warehouse-edit__form-header">Warehouse Details</h2>
-          <label className="warehouse-edit__form-label">Warehouse Name</label>
-          <input
-            defaultValue={warehouseDetails.name}
-            name="name"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">Street Address</label>
-          <input
-            defaultValue={warehouseDetails.address}
-            name="address"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">City</label>
-          <input
-            defaultValue={warehouseDetails.city}
-            name="city"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">Country</label>
-          <input
-            defaultValue={warehouseDetails.country}
-            name="country"
-            className="warehouse-edit__form-input"
-          />
-        </div>
-        <div className="warehouse-edit__form-container">
-          <h2 className="warehouse-edit__form-header">Contact Details</h2>
-          <label className="warehouse-edit__form-label">Contact Name</label>
-          <input
-            defaultValue={warehouseDetails.contactName}
-            name="contactName"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">Position</label>
-          <input
-            defaultValue={warehouseDetails.contactPosition}
-            name="contactPosition"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">Phone Number</label>
-          <input
-            defaultValue={warehouseDetails.contactPhone}
-            name="contactPhone"
-            className="warehouse-edit__form-input"
-          />
-          <label className="warehouse-edit__form-label">Email</label>
-          <input
-            defaultValue={warehouseDetails.contactEmail}
-            name="contactEmail"
-            className="warehouse-edit__form-input"
-          />
+        <div className="warehouse-edit__form-containers">
+          <div className="warehouse-edit__form-container warehouse-edit__form-container--left">
+            <h2 className="warehouse-edit__form-header">Warehouse Details</h2>
+            <label className="warehouse-edit__form-label">Warehouse Name</label>
+            <input
+              defaultValue={warehouseDetails.name}
+              name="name"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">Street Address</label>
+            <input
+              defaultValue={warehouseDetails.address}
+              name="address"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">City</label>
+            <input
+              defaultValue={warehouseDetails.city}
+              name="city"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">Country</label>
+            <input
+              defaultValue={warehouseDetails.country}
+              name="country"
+              className="warehouse-edit__form-input"
+            />
+          </div>
+          <div className="warehouse-edit__form-container">
+            <h2 className="warehouse-edit__form-header">Contact Details</h2>
+            <label className="warehouse-edit__form-label">Contact Name</label>
+            <input
+              defaultValue={warehouseDetails.contactName}
+              name="contactName"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">Position</label>
+            <input
+              defaultValue={warehouseDetails.contactPosition}
+              name="contactPosition"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">Phone Number</label>
+            <input
+              defaultValue={warehouseDetails.contactPhone}
+              name="contactPhone"
+              className="warehouse-edit__form-input"
+            />
+            <label className="warehouse-edit__form-label">Email</label>
+            <input
+              defaultValue={warehouseDetails.contactEmail}
+              name="contactEmail"
+              className="warehouse-edit__form-input"
+            />
+          </div>
         </div>
         <div className="warehouse-edit__btns">
           <Link
