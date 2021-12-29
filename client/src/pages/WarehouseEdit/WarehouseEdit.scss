@@ -2,9 +2,6 @@
 @use "../../styles/queries.scss" as *;
 
 .warehouse-edit {
-  &__background {
-    @include background;
-  }
   &__container {
     @include page-container;
   }
