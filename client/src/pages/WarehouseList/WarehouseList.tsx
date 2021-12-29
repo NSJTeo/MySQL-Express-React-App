@@ -24,46 +24,64 @@ export default function WarehouseList(): ReactElement {
   };
 
   return (
-    <div className="warehouse-list__container">
-      <WarehouseListSearchBar />
-      <div className="warehouse-list__headers">
-        <div className="warehouse-list__warehouse-address-header-container">
-          <div className="warehouse-list__header-container warehouse-list__header-container--warehouse">
-            <h2 className="warehouse-list__header">WAREHOUSE</h2>
-            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+    <div className="warehouse-list__background">
+      <div className="warehouse-list__container">
+        <WarehouseListSearchBar />
+        <div className="warehouse-list__headers">
+          <div className="warehouse-list__warehouse-address-header-container">
+            <div className="warehouse-list__header-container warehouse-list__header-container--warehouse">
+              <h2 className="warehouse-list__header">WAREHOUSE</h2>
+              <img
+                src={sortIcon}
+                alt=""
+                className="warehouse-list__sort-icon"
+              />
+            </div>
+            <div className="warehouse-list__header-container warehouse-list__header-container--address">
+              <h2 className="warehouse-list__header">ADDRESS</h2>
+              <img
+                src={sortIcon}
+                alt=""
+                className="warehouse-list__sort-icon"
+              />
+            </div>
           </div>
-          <div className="warehouse-list__header-container warehouse-list__header-container--address">
-            <h2 className="warehouse-list__header">ADDRESS</h2>
-            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
+          <div className="warehouse-list__contact-header-container">
+            <div className="warehouse-list__header-container warehouse-list__header-container--contact-name">
+              <h2 className="warehouse-list__header">CONTACT NAME</h2>
+              <img
+                src={sortIcon}
+                alt=""
+                className="warehouse-list__sort-icon"
+              />
+            </div>
+            <div className="warehouse-list__header-container">
+              <h2 className="warehouse-list__header">CONTACT INFORMATION</h2>
+              <img
+                src={sortIcon}
+                alt=""
+                className="warehouse-list__sort-icon"
+              />
+            </div>
+          </div>
+          <div className="warehouse-list__header-container warehouse-list__header-container--actions">
+            <h2 className="warehouse-list__header warehouse-list__header--actions">
+              ACTIONS
+            </h2>
           </div>
         </div>
-        <div className="warehouse-list__contact-header-container">
-          <div className="warehouse-list__header-container warehouse-list__header-container--contact-name">
-            <h2 className="warehouse-list__header">CONTACT NAME</h2>
-            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
-          </div>
-          <div className="warehouse-list__header-container">
-            <h2 className="warehouse-list__header">CONTACT INFORMATION</h2>
-            <img src={sortIcon} alt="" className="warehouse-list__sort-icon" />
-          </div>
-        </div>
-        <div className="warehouse-list__header-container warehouse-list__header-container--actions">
-          <h2 className="warehouse-list__header warehouse-list__header--actions">
-            ACTIONS
-          </h2>
-        </div>
+        <ul>
+          {warehouses.map((warehouse: WarehouseProfile) => {
+            return (
+              <WarehouseListItem
+                key={warehouse.id}
+                warehouse={warehouse}
+                handleDelete={handleDelete}
+              />
+            );
+          })}
+        </ul>
       </div>
-      <ul>
-        {warehouses.map((warehouse: WarehouseProfile) => {
-          return (
-            <WarehouseListItem
-              key={warehouse.id}
-              warehouse={warehouse}
-              handleDelete={handleDelete}
-            />
-          );
-        })}
-      </ul>
     </div>
   );
 }

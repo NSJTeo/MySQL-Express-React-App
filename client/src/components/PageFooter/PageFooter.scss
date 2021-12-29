@@ -1,0 +1,16 @@
+@use "../../styles/queries.scss" as *;
+
+.page-footer {
+  background: rgba(247, 248, 249, 0.7);
+  text-align: center;
+  padding-bottom: 3rem;
+  &__text {
+    color: #5c667e;
+    font-size: 11px;
+    line-height: 16px;
+    @include tablet {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+}
