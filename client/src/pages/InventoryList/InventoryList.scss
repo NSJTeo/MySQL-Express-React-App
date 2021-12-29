@@ -2,6 +2,9 @@
 @use "../../styles/queries.scss" as *;
 
 .inventory-list {
+  &__background {
+    @include background;
+  }
   &__container {
     @include page-container;
   }

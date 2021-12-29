@@ -44,48 +44,54 @@ export default function Warehouse(): ReactElement {
   };
 
   return (
-    <div className="warehouse__container">
-      <div className="warehouse__header">
-        <div className="warehouse__back-name-container">
-          <Link to="/" className="warehouse__back-link">
-            <img src={backArrow} alt="" />
+    <div className="warehouse__background">
+      <div className="warehouse__container">
+        <div className="warehouse__header">
+          <div className="warehouse__back-name-container">
+            <Link to="/" className="warehouse__back-link">
+              <img src={backArrow} alt="" />
+            </Link>
+            <h1 className="warehouse__title">{warehouse.name}</h1>
+          </div>
+          <Link
+            to={`/warehouse/${warehouseID}/edit`}
+            className="warehouse__edit-link"
+          >
+            <img src={editIcon} alt="" className="warehouse__edit-icon" />
+            <p className="warehouse__edit-text">Edit</p>
           </Link>
-          <h1 className="warehouse__title">{warehouse.name}</h1>
         </div>
-        <Link
-          to={`/warehouse/${warehouseID}/edit`}
-          className="warehouse__edit-link"
-        >
-          <img src={editIcon} alt="" className="warehouse__edit-icon" />
-          <p className="warehouse__edit-text">Edit</p>
-        </Link>
-      </div>
-      <div className="warehouse__info-container">
-        <div className="warehouse__address-container">
-          <p className="warehouse__info-header">WAREHOUSE ADDRESS:</p>
-          <p className="warehouse__address">
-            {warehouse.address}, {warehouse.city}, {warehouse.country}
-          </p>
-        </div>
-        <div className="warehouse__contact-name-info-container">
-          <div className="warehouse__contact-name-container">
-            <p className="warehouse__info-header">CONTACT NAME:</p>
-            <p className="warehouse__contact-info">{warehouse.contactName}</p>
-            <p className="warehouse__contact-info">
-              {warehouse.contactPosition}
+        <div className="warehouse__info-container">
+          <div className="warehouse__address-container">
+            <p className="warehouse__info-header">WAREHOUSE ADDRESS:</p>
+            <p className="warehouse__address">
+              {warehouse.address}, {warehouse.city}, {warehouse.country}
             </p>
           </div>
-          <div className="warehouse__contact-info-container">
-            <p className="warehouse__info-header">CONTACT INFORMATION:</p>
-            <p className="warehouse__contact-info">{warehouse.contactPhone}</p>
-            <p className="warehouse__contact-info">{warehouse.contactEmail}</p>
+          <div className="warehouse__contact-name-info-container">
+            <div className="warehouse__contact-name-container">
+              <p className="warehouse__info-header">CONTACT NAME:</p>
+              <p className="warehouse__contact-info">{warehouse.contactName}</p>
+              <p className="warehouse__contact-info">
+                {warehouse.contactPosition}
+              </p>
+            </div>
+            <div className="warehouse__contact-info-container">
+              <p className="warehouse__info-header">CONTACT INFORMATION:</p>
+              <p className="warehouse__contact-info">
+                {warehouse.contactPhone}
+              </p>
+              <p className="warehouse__contact-info">
+                {warehouse.contactEmail}
+              </p>
+            </div>
           </div>
         </div>
+        <WarehouseInventoryList
+          inventoryItems={inventoryItems}
+          handleDelete={handleDelete}
+        />
       </div>
-      <WarehouseInventoryList
-        inventoryItems={inventoryItems}
-        handleDelete={handleDelete}
-      />
     </div>
   );
 }

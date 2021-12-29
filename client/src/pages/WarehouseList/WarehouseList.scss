@@ -1,9 +1,10 @@
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/queries.scss" as *;
+@use "../../styles/mixins.scss" as *;
 
 .warehouse-list {
   &__background {
-    background: rgba(247, 248, 249, 0.7);
+    @include background;
   }
   &__container {
     @include page-container;
