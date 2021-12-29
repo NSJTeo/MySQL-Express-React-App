@@ -104,7 +104,7 @@ export default function InventoryItemAdd(): ReactElement {
             <h2 className="inventory-item-add__form-header">
               Item Availability
             </h2>
-            <p className="inventory-item-add__form-label"></p>
+            <p className="inventory-item-add__form-label">Status</p>
             <div className="inventory-item-add__status-containers">
               <div className="inventory-item-add__status-container">
                 <input
