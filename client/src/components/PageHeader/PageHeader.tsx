@@ -18,7 +18,10 @@ export default function PageHeader(): ReactElement {
       </Link>
       {warehousePage ? (
         <div className="header__links">
-          <Link to="/" className="header__link header__link--selected">
+          <Link
+            to="/"
+            className="header__link header__link--selected header__link--selected-warehouse"
+          >
             <p className="header__link-text">Warehouses</p>
           </Link>
           <Link to="/inventory" className="header__link">
@@ -30,7 +33,10 @@ export default function PageHeader(): ReactElement {
           <Link to="/" className="header__link">
             <p className="header__link-text">Warehouses</p>
           </Link>
-          <Link to="/inventory" className="header__link header__link--selected">
+          <Link
+            to="/inventory"
+            className="header__link header__link--selected header__link--selected-inventory"
+          >
             <p className="header__link-text">Inventory</p>
           </Link>
         </div>

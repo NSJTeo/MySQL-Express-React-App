@@ -82,7 +82,7 @@ export default function InventoryItemAdd(): ReactElement {
             <input
               name="name"
               placeholder="Item Name"
-              className="inventory-item-edit__form-input"
+              className="inventory-item-add__form-input"
             />
             <label className="inventory-item-add__form-label">
               Description
@@ -90,10 +90,10 @@ export default function InventoryItemAdd(): ReactElement {
             <textarea
               name="description"
               placeholder="Please enter a description..."
-              className="inventory-item-edit__form-input inventory-item-edit__form-input--text-area"
+              className="inventory-item-add__form-input inventory-item-add__form-input--text-area"
             />
             <label className="inventory-item-add__form-label">Category</label>
-            <select name="category" className="inventory-item-edit__form-input">
+            <select name="category" className="inventory-item-add__form-input">
               <option value="">Please Select</option>
               {categories.map((category: string) => {
                 return <option value={category}>{category}</option>;
@@ -132,15 +132,17 @@ export default function InventoryItemAdd(): ReactElement {
             <label className="inventory-item-add__form-label">Quantity</label>
             <input
               name="quantity"
-              className="inventory-item-edit__form-input"
+              className="inventory-item-add__form-input"
               defaultValue={0}
             />
             <label className="inventory-item-add__form-label">Warehouse</label>
             <select
               name="warehouseName"
-              className="inventory-item-edit__form-input"
+              className="inventory-item-add__form-input"
             >
-              <option value="">Please Select</option>
+              <option value="" className="inventory-">
+                Please Select
+              </option>
               {warehouses.map((warehouse: WarehouseProfile) => {
                 return <option value={warehouse.name}>{warehouse.name}</option>;
               })}

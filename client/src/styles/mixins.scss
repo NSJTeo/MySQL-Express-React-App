@@ -9,6 +9,7 @@
   top: -4.25rem;
   @include tablet {
     top: -6.0625rem;
+    margin: 0 2rem;
   }
 }
 
@@ -92,6 +93,9 @@
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  @include tablet {
+    margin-bottom: 1.5rem;
+  }
 }
 
 @mixin form-btns {

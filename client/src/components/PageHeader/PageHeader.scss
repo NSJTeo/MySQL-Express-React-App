@@ -42,8 +42,15 @@
       background-color: #13182c;
       padding: 0.5rem 1rem;
       border-radius: 1.25rem;
+    }
+    &--selected-warehouse {
       @include tablet {
         margin-right: 1.5rem;
+      }
+    }
+    &--selected-inventory {
+      @include tablet {
+        margin-left: 1.5rem;
       }
     }
   }
