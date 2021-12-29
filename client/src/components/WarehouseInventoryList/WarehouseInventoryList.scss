@@ -4,6 +4,7 @@
 .warehouse-inventory-list {
   &__headers {
     display: none;
+    background: rgba(247, 248, 249, 0.7);
     @include tablet {
       display: flex;
       padding: 11px 2rem;
