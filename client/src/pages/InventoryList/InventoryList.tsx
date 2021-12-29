@@ -39,47 +39,45 @@ export default function InventoryList(): ReactElement {
   }
 
   return (
-    <div className="inventory-list__background">
-      <div className="inventory-list__container">
-        <InventoryListSearchBar />
-        <div className="inventory-list__headers">
-          <div className="inventory-list__header-container inventory-list__header-container--item">
-            <h2 className="inventory-list__header">INVENTORY ITEM</h2>
-            <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
-          </div>
-          <div className="inventory-list__header-container inventory-list__header-container--category">
-            <h2 className="inventory-list__header">CATEGORY</h2>
-            <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
-          </div>
-          <div className="inventory-list__header-container inventory-list__header-container--status">
-            <h2 className="inventory-list__header">STATUS</h2>
-            <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
-          </div>
-          <div className="inventory-list__header-container inventory-list__header-container--qty">
-            <h2 className="inventory-list__header">QTY</h2>
-            <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
-          </div>
-          <div className="inventory-list__header-container inventory-list__header-container--warehouse">
-            <h2 className="inventory-list__header">WAREHOUSE</h2>
-            <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
-          </div>
-          <div className="inventory-list__header-container inventory-list__header-container--actions">
-            <h2 className="inventory-list__header">ACTIONS</h2>
-          </div>
+    <div className="inventory-list__container">
+      <InventoryListSearchBar />
+      <div className="inventory-list__headers">
+        <div className="inventory-list__header-container inventory-list__header-container--item">
+          <h2 className="inventory-list__header">INVENTORY ITEM</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
         </div>
-        <ul>
-          {inventoryItems.map((inventoryItem: InventoryItemInfo) => {
-            return (
-              <InventoryListItem
-                key={inventoryItem.id}
-                inventoryItem={inventoryItem}
-                handleDelete={handleDelete}
-                warehouse={getWarehouse(inventoryItem.warehouseID || "")}
-              />
-            );
-          })}
-        </ul>
+        <div className="inventory-list__header-container inventory-list__header-container--category">
+          <h2 className="inventory-list__header">CATEGORY</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container inventory-list__header-container--status">
+          <h2 className="inventory-list__header">STATUS</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container inventory-list__header-container--qty">
+          <h2 className="inventory-list__header">QTY</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container inventory-list__header-container--warehouse">
+          <h2 className="inventory-list__header">WAREHOUSE</h2>
+          <img src={sortIcon} alt="" className="inventory-list__sort-icon" />
+        </div>
+        <div className="inventory-list__header-container inventory-list__header-container--actions">
+          <h2 className="inventory-list__header">ACTIONS</h2>
+        </div>
       </div>
+      <ul>
+        {inventoryItems.map((inventoryItem: InventoryItemInfo) => {
+          return (
+            <InventoryListItem
+              key={inventoryItem.id}
+              inventoryItem={inventoryItem}
+              handleDelete={handleDelete}
+              warehouse={getWarehouse(inventoryItem.warehouseID || "")}
+            />
+          );
+        })}
+      </ul>
     </div>
   );
 }
